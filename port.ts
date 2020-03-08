@@ -1,4 +1,4 @@
-class Port {
+export class Port {
     private readonly star: string;
     private readonly satellite: string;
     private readonly port: string;
