@@ -1,5 +1,5 @@
-import { Port, TradeInfo } from "./port";
-import { Commodity } from "./commodity";
+import { Port } from "./port";
+import { Commodity, TradeInfo } from "./commodity";
 
 export class PortMap {
     private readonly portCommoditiesMap: Map<Port, TradeInfo>;

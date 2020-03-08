@@ -1,5 +1,39 @@
 import { IComparable, CompareResult } from './sorting';
 
+export class TradeInfo {
+    private readonly buying: Map<string, Commodity>;
+    private readonly selling: Map<string, Commodity>;
+
+    constructor() {
+        this.buying = new Map();
+        this.selling = new Map();
+    }
+
+    public addBuying(commodity: Commodity): void {
+        this.buying.set(commodity.hash(), commodity);
+    }
+
+    public addSelling(commodity: Commodity): void {
+        this.selling.set(commodity.hash(), commodity);
+    }
+
+    public isBuying(commodity: Commodity): boolean {
+        return this.buying.has(commodity.hash());
+    }
+
+    public isSelling(commodity: Commodity): boolean {
+        return this.selling.has(commodity.hash());
+    }
+
+    public getBuying(): IterableIterator<Commodity> {
+        return this.buying.values();
+    }
+
+    public getSelling(): IterableIterator<Commodity> {
+        return this.selling.values();
+    }
+}
+
 export class Commodity implements IComparable {
     private readonly name: string;
     private readonly price: number;

@@ -1,4 +1,5 @@
-import { Port, TradeInfo } from "./port";
+import { Port } from "./port";
+import { TradeInfo } from "./commodity";
 
 export class PortNode {
     private readonly port: Port;
