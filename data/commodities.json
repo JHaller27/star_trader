@@ -1,0 +1,30 @@
+[
+    {
+        "location": {
+            "star": "Stanton",
+            "satellite": "Crusader",
+            "port": "Port Ollisar"
+        },
+        "commodities": [
+            {
+                "name": "Hydrogen",
+                "buy": 1.23,
+                "sell": null
+            }
+        ]
+    },
+    {
+        "location": {
+            "star": "Stanton",
+            "satellite": "Crusader",
+            "port": "GrimHEX"
+        },
+        "commodities": [
+            {
+                "name": "Hydrogen",
+                "buy": null,
+                "sell": 2.34
+            }
+        ]
+    }
+]
