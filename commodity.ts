@@ -6,4 +6,8 @@ export class Commodity {
         this.name = name;
         this.price = price;
     }
+
+    public toString(): string {
+        return `${this.name}@${this.price} UEC`;
+    }
 }
