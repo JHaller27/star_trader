@@ -1,5 +1,6 @@
 import { Port } from "./port";
 import { Commodity, TradeInfo } from "./commodity";
+import { PortNode, RouteMap } from "./graph";
 
 export class PortMap {
     private readonly portCommoditiesMap: Map<Port, TradeInfo>;
@@ -44,18 +45,51 @@ export class PortMap {
         return ports;
     }
 
-    public findTradeToPorts(port: Port): Port[] {
-        const tradeInfo: TradeInfo | undefined = this.portCommoditiesMap.get(port);
-        if (tradeInfo === undefined) {
-            return [];
+    public asRouteMap(): RouteMap {
+        const routeMap = new RouteMap();
+
+        // Add Ports to RouteMap
+        for (const [port, tradeInfo] of this.portCommoditiesMap.entries()) {
+            routeMap.addPort(port, tradeInfo);
         }
 
-        const sellingCommodities = tradeInfo.getSelling();
+        // Link Ports via Routes
+        for (const originPort of this.portCommoditiesMap.keys()) {
+            const destinationPortMap = this.findTradeToPorts(originPort);
 
-        const ports: Port[] = [];
+            if (destinationPortMap === undefined) {
+                continue;
+            }
+
+            for (const [destinationPort, commodities] of destinationPortMap.entries()) {
+                for (const commodity of commodities) {
+                    routeMap.addRoute(originPort, destinationPort, commodity);
+                }
+            }
+        }
+
+        return routeMap;
+    }
+
+    private findTradeToPorts(port: Port): Map<Port, Commodity[]> | undefined {
+        const tradeInfo: TradeInfo | undefined = this.portCommoditiesMap.get(port);
+        if (tradeInfo === undefined) {
+            return undefined;
+        }
+
+        const ports: Map<Port, Commodity[]> = new Map();
+
+        const sellingCommodities = tradeInfo.getSelling();
         for (const commodity of sellingCommodities) {
             const buyingPorts: Port[] = this.findPortsBuying(commodity);
-            ports.concat(buyingPorts);
+
+            for (const buyingPort of buyingPorts) {
+                if (!ports.has(buyingPort)) {
+                    ports.set(buyingPort, []);
+                }
+
+                ports.get(buyingPort)?.push(commodity);
+            }
         }
 
         return ports;
