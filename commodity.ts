@@ -9,6 +9,10 @@ export class Commodity implements IComparable {
         this.price = price;
     }
 
+    public hash(): string {
+        return this.name;
+    }
+
     public toString(): string {
         return `${this.name}@${this.price} UEC`;
     }

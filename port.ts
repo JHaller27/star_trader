@@ -1,28 +1,28 @@
 import { Commodity } from './commodity';
 
 export class TradeInfo {
-    private readonly buying: Commodity[];
-    private readonly selling: Commodity[];
+    private readonly buying: Map<string, Commodity>;
+    private readonly selling: Map<string, Commodity>;
 
     constructor() {
-        this.buying = [];
-        this.selling = [];
+        this.buying = new Map();
+        this.selling = new Map();
     }
 
     public addBuying(commodity: Commodity): void {
-        this.buying.push(commodity);
+        this.buying.set(commodity.hash(), commodity);
     }
 
     public addSelling(commodity: Commodity): void {
-        this.selling.push(commodity);
+        this.selling.set(commodity.hash(), commodity);
     }
 
     public isBuying(commodity: Commodity): boolean {
-        return this.buying.includes(commodity);
+        return this.buying.has(commodity.hash());
     }
 
     public isSelling(commodity: Commodity): boolean {
-        return this.selling.includes(commodity);
+        return this.selling.has(commodity.hash());
     }
 }
 
