@@ -1,20 +1,23 @@
-import { Port } from "./port";
-import { Commodity } from "./commodity";
+import { Port, TradeInfo } from "./port";
 
-class PortNode {
-    private readonly portMap: Map<Port, Route>;
+export class PortNode {
+    private readonly port: Port;
+    private readonly tradeInfo: TradeInfo;
+    private readonly routes: Route[];
 
-    constructor() {
-        this.portMap = new Map<Port, Route>();
+    constructor(port: Port, tradeInfo: TradeInfo) {
+        this.port = port;
+        this.tradeInfo = tradeInfo;
+        this.routes = [];
     }
 }
 
-class Route {
-    private readonly destination: Port;
-    private readonly commodity: Commodity;  // commodity.price is the profit
+export class Route {
+    private readonly destination: PortNode;
+    private readonly commodityName: string;
 
-    constructor(destination: Port, commodityProfit: Commodity) {
-        this.destination = destination;
-        this.commodity = commodityProfit;
+    constructor(destination: PortNode, commodityName: string) {
+        this.destination =  destination;
+        this.commodityName = commodityName;
     }
 }
