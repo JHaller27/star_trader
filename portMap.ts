@@ -12,7 +12,7 @@ class PortMap {
         this.portCommoditiesMap = new Map();
     }
 
-    public addCommodity(port: Port, commodity: Commodity): void {
+    public add(port: Port, commodity: Commodity): void {
         if (this.portCommoditiesMap.has(port)) {
             this.portCommoditiesMap.get(port)?.push(commodity);
         }
