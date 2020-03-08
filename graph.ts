@@ -2,12 +2,12 @@ import { Port, TradeInfo } from "./port";
 
 export class PortNode {
     private readonly port: Port;
-    private readonly tradeInfo: TradeInfo[];
+    private readonly tradeInfo: TradeInfo;
     private readonly routes: Route[];
 
-    constructor(port: Port) {
+    constructor(port: Port, tradeInfo: TradeInfo) {
         this.port = port;
-        this.tradeInfo = [];
+        this.tradeInfo = tradeInfo;
         this.routes = [];
     }
 }
