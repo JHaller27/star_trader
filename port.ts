@@ -24,6 +24,14 @@ export class TradeInfo {
     public isSelling(commodity: Commodity): boolean {
         return this.selling.has(commodity.hash());
     }
+
+    public getBuying(): IterableIterator<Commodity> {
+        return this.buying.values();
+    }
+
+    public getSelling(): IterableIterator<Commodity> {
+        return this.selling.values();
+    }
 }
 
 export class Port {

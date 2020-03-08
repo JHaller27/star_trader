@@ -44,6 +44,23 @@ export class PortMap {
         return ports;
     }
 
+    public findTradeToPorts(port: Port): Port[] {
+        const tradeInfo: TradeInfo | undefined = this.portCommoditiesMap.get(port);
+        if (tradeInfo === undefined) {
+            return [];
+        }
+
+        const sellingCommodities = tradeInfo.getSelling();
+
+        const ports: Port[] = [];
+        for (const commodity of sellingCommodities) {
+            const buyingPorts: Port[] = this.findPortsBuying(commodity);
+            ports.concat(buyingPorts);
+        }
+
+        return ports;
+    }
+
     private findPorts(filterFunc: (p: Port, ti: TradeInfo) => boolean): Port[] {
         const ports: Port[] = [];
 
