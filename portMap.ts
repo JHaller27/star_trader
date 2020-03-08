@@ -1,23 +1,44 @@
 import { Port } from "./port";
 import { Commodity } from "./commodity";
 
-/**
- * A geographical-esque map (not a HashMap etc.) of ports and their commodities.
- * Used as a first step when importing data.
- */
-class PortMap {
-    private readonly portCommoditiesMap: Map<Port, Commodity[]>;
+export class TradeInfo {
+    private readonly buying: Commodity[];
+    private readonly selling: Commodity[];
+
+    constructor() {
+        this.buying = [];
+        this.selling = [];
+    }
+
+    public addBuying(commodity: Commodity) {
+        this.buying.push(commodity);
+    }
+
+    public addSelling(commodity: Commodity) {
+        this.selling.push(commodity);
+    }
+}
+
+export class PortMap {
+    private readonly portCommoditiesMap: Map<Port, TradeInfo>;
 
     constructor() {
         this.portCommoditiesMap = new Map();
     }
 
-    public add(port: Port, commodity: Commodity): void {
-        if (this.portCommoditiesMap.has(port)) {
-            this.portCommoditiesMap.get(port)?.push(commodity);
-        }
-        else {
-            this.portCommoditiesMap.set(port, [commodity]);
+    public addBuying(port: Port, commodity: Commodity): void {
+        this.ensurePortExists(port);
+        this.portCommoditiesMap.get(port)?.addBuying(commodity);
+    }
+
+    public addSelling(port: Port, commodity: Commodity): void {
+        this.ensurePortExists(port);
+        this.portCommoditiesMap.get(port)?.addSelling(commodity);
+    }
+
+    private ensurePortExists(port: Port) {
+        if (!this.portCommoditiesMap.has(port)) {
+            this.portCommoditiesMap.set(port, new TradeInfo());
         }
     }
 }
