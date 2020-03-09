@@ -10,6 +10,11 @@
                 "name": "Hydrogen",
                 "buying": null,
                 "selling": 1.23
+            },
+            {
+                "name": "Scrap",
+                "selling": null,
+                "buying": 0.01
             }
         ]
     },
@@ -23,7 +28,12 @@
             {
                 "name": "Hydrogen",
                 "buying": 2.34,
-                "selling": null
+                "selling": 2.34
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 0.05
             }
         ]
     }

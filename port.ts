@@ -12,4 +12,8 @@ export class Port {
     public toString(): string {
         return `${this.star} > ${this.satellite} > ${this.port}`;
     }
+
+    public equals(other: Port): boolean {
+        return this.star === other.star && this.satellite === other.satellite && this.port === other.port;
+    }
 }

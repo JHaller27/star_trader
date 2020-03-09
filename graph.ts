@@ -1,5 +1,6 @@
 import { Port } from "./port";
 import { TradeInfo, Commodity } from "./commodity";
+import { CompareResult } from "./sorting";
 
 export class RouteMap {
     private readonly portMap: Map<Port, PortNode>;
@@ -26,6 +27,10 @@ export class RouteMap {
 
         const originCommodity: Commodity = originNode.getSellingCommodity(commodity);
         const destinationCommodity: Commodity = destinationNode.getBuyingCommodity(commodity);
+
+        if (origin.equals(destination) && originCommodity.compareTo(destinationCommodity) !== CompareResult.LessThan) {
+            return;
+        }
 
         const route = new Route(destinationNode, originCommodity, destinationCommodity);
         originNode.addRoute(route);
