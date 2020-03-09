@@ -36,6 +36,10 @@ export class RouteMap {
         originNode.addRoute(route);
     }
 
+    public toTree(ship: Ship): RouteTree {
+        return new RouteTree();
+    }
+
     public toString(): string {
         let s: string = '';
 
