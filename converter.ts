@@ -1,5 +1,5 @@
 import { IReader, InputData } from "./reader";
-import { RouteMap } from "./graph";
+import { RouteMap } from "./routeMap";
 import { PortMap } from "./portMap";
 import { Port } from "./port";
 import { Commodity } from "./commodity";

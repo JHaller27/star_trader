@@ -1,6 +1,6 @@
 import { IReader, JSONReader } from "./reader";
 import { RouteMapGenerator } from "./converter";
-import { RouteMap } from "./graph";
+import { RouteMap } from "./routeMap";
 
 const reader: IReader = new JSONReader('./data/commodities.json');
 const generator = new RouteMapGenerator(reader);

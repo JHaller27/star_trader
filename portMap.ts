@@ -1,6 +1,6 @@
 import { Port } from "./port";
 import { Commodity, TradeInfo } from "./commodity";
-import { PortNode, RouteMap } from "./graph";
+import { PortNode, RouteMap } from "./routeMap";
 
 export class PortMap {
     private readonly portCommoditiesMap: Map<Port, TradeInfo>;
