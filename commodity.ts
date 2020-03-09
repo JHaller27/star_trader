@@ -7,6 +7,10 @@ export class TradeInfo {
     constructor() {
         this.buying = new Map();
         this.selling = new Map();
+
+        // There always exists the option to trade nothing
+        this.addBuying(Commodity.NewNothing());
+        this.addSelling(Commodity.NewNothing());
     }
 
     public addBuying(commodity: Commodity): void {
@@ -43,6 +47,8 @@ export class TradeInfo {
 }
 
 export class Commodity implements IComparable {
+    private static readonly NOTHING = 'nothing';
+
     private readonly name: string;
     private readonly price: number;
 
@@ -51,11 +57,19 @@ export class Commodity implements IComparable {
         this.price = price;
     }
 
+    public static NewNothing(): Commodity {
+        return new Commodity(Commodity.NOTHING, 0);
+    }
+
     public hash(): string {
         return this.name;
     }
 
     public toString(): string {
+        if (this.name === Commodity.NOTHING) {
+            return `${Commodity.NOTHING}`;
+        }
+
         return `${this.name}@${this.price} UEC`;
     }
 
