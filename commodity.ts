@@ -50,11 +50,17 @@ export class Commodity implements IComparable {
     private static readonly NOTHING = 'nothing';
 
     private readonly name: string;
-    private readonly price: number;
+    private price: number;
+    private units: number;
+
+    private absolutePrice: boolean;
 
     constructor(name: string, price: number) {
         this.name = name;
         this.price = price;
+        this.units = 0;
+
+        this.absolutePrice = false;
     }
 
     public static NewNothing(): Commodity {
@@ -70,7 +76,8 @@ export class Commodity implements IComparable {
             return `${Commodity.NOTHING}`;
         }
 
-        return `${this.name}@${this.price} UEC`;
+        const units = this.absolutePrice ? 'UEC' : 'UEC/unit';
+        return `${this.name}@${this.price} ${units}`;
     }
 
     public comparePrice(other: Commodity): number {
@@ -91,5 +98,38 @@ export class Commodity implements IComparable {
 
     public equals(other: Commodity): boolean {
         return this.name === other.name;
+    }
+
+    public ppu2Absolute(units: number) {
+        this.assertAbsolutePrice();
+
+        this.units = units;
+        this.price = this.price * this.units;
+        this.absolutePrice = true;
+    }
+
+    public purchaseMaxUnits(investment: number, unitCapacity: number): void {
+        const maxUnits = this.getMaxUnits(investment, unitCapacity);
+        this.ppu2Absolute(maxUnits);
+    }
+
+    private assertAbsolutePrice(): void {
+        if (this.absolutePrice) {
+            throw new Error('Commodity already an absolute price');
+        }
+    }
+
+    private assertPerUnitPrice(): void {
+        if (!this.absolutePrice) {
+            throw new Error('Commodity should be an absolute price');
+        }
+    }
+
+    private getMaxUnits(investment: number, unitCapacity: number): number {
+        this.assertPerUnitPrice();
+
+        // ($)/($/unit) = unit
+        const unitsByInvestment =  Math.floor(investment / this.price);
+        return Math.min(unitsByInvestment, unitCapacity);
     }
 }
