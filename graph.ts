@@ -75,6 +75,22 @@ export class PortNode {
     }
 
     public addRoute(route: Route): void {
+        // If same route already exists via different commodity...
+        const sameRouteIdx: number = this.routes.findIndex((existingRoute: Route) => {
+            return route.hasSameDestination(existingRoute);
+        });
+        if (sameRouteIdx !== -1) {
+            const existingRoute = this.routes[sameRouteIdx];
+
+            // ...and the new route is better, then replace the route.
+            if (route.profit() > existingRoute.profit()) {
+                this.routes[sameRouteIdx] = route;
+            }
+
+            // ...and the existing route is better, don't add route.
+            return;
+        }
+
         this.routes.push(route);
     }
 
@@ -91,10 +107,14 @@ export class PortNode {
     public toShallowString(): string {
         return this.port.toString();
     }
+
+    public equals(other: PortNode): boolean {
+        return this.port === other.port;
+    }
 }
 
 export class Route {
-    private readonly destination: PortNode;
+    public readonly destination: PortNode;
     private readonly sourceCommodity: Commodity;
     private readonly destinationCommodity: Commodity;
 
@@ -104,7 +124,15 @@ export class Route {
         this.destinationCommodity = destinationCommodity;
     }
 
+    public profit(): number {
+        return this.destinationCommodity.comparePrice(this.sourceCommodity);
+    }
+
     public toString(): string {
         return `Buy ${this.sourceCommodity} -> Sell ${this.destinationCommodity} in '${this.destination.toShallowString()}'`;
+    }
+
+    public hasSameDestination(other: Route): boolean {
+        return this.destination.equals(other.destination);
     }
 }

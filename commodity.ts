@@ -73,6 +73,10 @@ export class Commodity implements IComparable {
         return `${this.name}@${this.price} UEC`;
     }
 
+    public comparePrice(other: Commodity): number {
+        return this.price - other.price;
+    }
+
     public compareTo(other: Commodity): CompareResult {
         if (this.price < other.price) {
             return CompareResult.LessThan;
