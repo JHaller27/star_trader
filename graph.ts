@@ -75,6 +75,8 @@ export class PortNode {
     }
 
     public addRoute(route: Route): void {
+        // Don't add routes with negative profit
+        if (route.profit() < 0) {
             return;
         }
 
