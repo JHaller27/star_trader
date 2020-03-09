@@ -75,19 +75,6 @@ export class PortNode {
     }
 
     public addRoute(route: Route): void {
-        // If same route already exists via different commodity...
-        const sameRouteIdx: number = this.routes.findIndex((existingRoute: Route) => {
-            return route.hasSameDestination(existingRoute);
-        });
-        if (sameRouteIdx !== -1) {
-            const existingRoute = this.routes[sameRouteIdx];
-
-            // ...and the new route is better, then replace the route.
-            if (route.profit() > existingRoute.profit()) {
-                this.routes[sameRouteIdx] = route;
-            }
-
-            // ...and the existing route is better, don't add route.
             return;
         }
 
