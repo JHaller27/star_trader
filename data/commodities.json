@@ -8,8 +8,8 @@
         "commodities": [
             {
                 "name": "Hydrogen",
-                "buy": 1.23,
-                "sell": null
+                "buying": null,
+                "selling": 1.23
             }
         ]
     },
@@ -22,8 +22,8 @@
         "commodities": [
             {
                 "name": "Hydrogen",
-                "buy": null,
-                "sell": 2.34
+                "buying": 2.34,
+                "selling": null
             }
         ]
     }

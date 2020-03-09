@@ -6,8 +6,8 @@ export interface IReader {
 
 export interface Commodity {
     name: string,
-    buy: number | null,
-    sell: number | null
+    buying: number | null,
+    selling: number | null
 }
 
 export interface Location {

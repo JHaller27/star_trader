@@ -39,22 +39,22 @@ export class RouteMapGenerator {
             );
 
             for (const rawCommodity of rawPort.commodities) {
-                if (rawCommodity.buy !== null) {
-                    const buyCommodity: Commodity = new Commodity(
+                if (rawCommodity.buying !== null) {
+                    const buyingCommodity: Commodity = new Commodity(
                         rawCommodity.name,
-                        rawCommodity.buy
+                        rawCommodity.buying
                     );
 
-                    this.portMap.addBuying(port, buyCommodity);
+                    this.portMap.addBuying(port, buyingCommodity);
                 }
 
-                if (rawCommodity.sell !== null) {
-                    const sellCommodity: Commodity = new Commodity(
+                if (rawCommodity.selling !== null) {
+                    const sellingCommodity: Commodity = new Commodity(
                         rawCommodity.name,
-                        rawCommodity.sell
+                        rawCommodity.selling
                     );
 
-                    this.portMap.addSelling(port, sellCommodity);
+                    this.portMap.addSelling(port, sellingCommodity);
                 }
             }
         }

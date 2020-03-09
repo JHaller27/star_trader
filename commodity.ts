@@ -32,6 +32,14 @@ export class TradeInfo {
     public getSelling(): IterableIterator<Commodity> {
         return this.selling.values();
     }
+
+    public findBuying(commodity: Commodity): Commodity | undefined {
+        return this.buying.get(commodity.hash());
+    }
+
+    public findSelling(commodity: Commodity): Commodity | undefined {
+        return this.selling.get(commodity.hash());
+    }
 }
 
 export class Commodity implements IComparable {
@@ -61,5 +69,9 @@ export class Commodity implements IComparable {
         else {
             return CompareResult.EqualTo;
         }
+    }
+
+    public equals(other: Commodity): boolean {
+        return this.name === other.name;
     }
 }

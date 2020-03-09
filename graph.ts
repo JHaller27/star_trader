@@ -24,7 +24,10 @@ export class RouteMap {
             throw new Error(`Destination port ${destination.toString()} not found. Make sure to add Port to RouteMap first.`);
         }
 
-        const route = new Route(destinationNode, commodity.hash());
+        const originCommodity: Commodity = originNode.getSellingCommodity(commodity);
+        const destinationCommodity: Commodity = destinationNode.getBuyingCommodity(commodity);
+
+        const route = new Route(destinationNode, originCommodity, destinationCommodity);
         originNode.addRoute(route);
     }
 
@@ -50,6 +53,22 @@ export class PortNode {
         this.routes = [];
     }
 
+    public getBuyingCommodity(commodity: Commodity): Commodity {
+        const buying = this.tradeInfo.findBuying(commodity);
+        if (buying === undefined) {
+            throw new Error(`Commodity ${commodity} not available for buying`);
+        }
+        return buying;
+    }
+
+    public getSellingCommodity(commodity: Commodity): Commodity {
+        const selling = this.tradeInfo.findSelling(commodity);
+        if (selling === undefined) {
+            throw new Error(`Commodity ${commodity} not available for selling`);
+        }
+        return selling;
+    }
+
     public addRoute(route: Route): void {
         this.routes.push(route);
     }
@@ -63,18 +82,24 @@ export class PortNode {
 
         return s;
     }
+
+    public toShallowString(): string {
+        return this.port.toString();
+    }
 }
 
 export class Route {
     private readonly destination: PortNode;
-    private readonly commodityName: string;
+    private readonly sourceCommodity: Commodity;
+    private readonly destinationCommodity: Commodity;
 
-    constructor(destination: PortNode, commodityName: string) {
+    constructor(destination: PortNode, sourceCommodity: Commodity, destinationCommodity: Commodity) {
         this.destination =  destination;
-        this.commodityName = commodityName;
+        this.sourceCommodity = sourceCommodity;
+        this.destinationCommodity = destinationCommodity;
     }
 
     public toString(): string {
-        return `${this.commodityName} -> ${this.destination}`;
+        return `Buy ${this.sourceCommodity} -> Sell ${this.destinationCommodity} in '${this.destination.toShallowString()}'`;
     }
 }
