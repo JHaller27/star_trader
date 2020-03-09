@@ -10,6 +10,6 @@ export class Port {
     }
 
     public toString(): string {
-        return `${this.star} ${this.satellite} ${this.port}`;
+        return `${this.star} > ${this.satellite} > ${this.port}`;
     }
 }

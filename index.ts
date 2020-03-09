@@ -5,3 +5,5 @@ import { RouteMap } from "./graph";
 const reader: IReader = new JSONReader('./data/commodities.json');
 const generator = new RouteMapGenerator(reader);
 const routeMap: RouteMap = generator.getRouteMap();
+
+console.log(routeMap.toString());

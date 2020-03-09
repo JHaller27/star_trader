@@ -27,6 +27,16 @@ export class RouteMap {
         const route = new Route(destinationNode, commodity.hash());
         originNode.addRoute(route);
     }
+
+    public toString(): string {
+        let s: string = '';
+
+        for (const portNode of this.portMap.values()) {
+            s += `${portNode.toString()}`;
+        }
+
+        return s;
+    }
 }
 
 export class PortNode {
@@ -43,6 +53,16 @@ export class PortNode {
     public addRoute(route: Route): void {
         this.routes.push(route);
     }
+
+    public toString(): string {
+        let s: string = `${this.port.toString()}\n`;
+
+        for (const route of this.routes) {
+            s += `\t${route.toString()}\n`;
+        }
+
+        return s;
+    }
 }
 
 export class Route {
@@ -52,5 +72,9 @@ export class Route {
     constructor(destination: PortNode, commodityName: string) {
         this.destination =  destination;
         this.commodityName = commodityName;
+    }
+
+    public toString(): string {
+        return `${this.commodityName} -> ${this.destination}`;
     }
 }
