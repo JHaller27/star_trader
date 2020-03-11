@@ -36,10 +36,6 @@ export class RouteMap {
         originNode.addRoute(route);
     }
 
-    public toTree(ship: Ship): RouteTree {
-        return new RouteTree();
-    }
-
     public toString(): string {
         let s: string = '';
 
@@ -103,6 +99,10 @@ export class PortNode {
 
     public equals(other: PortNode): boolean {
         return this.port === other.port;
+    }
+
+    public getRoutes(): Route[] {
+        return [];
     }
 }
 

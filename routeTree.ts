@@ -1,9 +1,10 @@
 import { PortNode } from './routeMap';
+import { Commodity } from './commodity';
 
 class TreeNode {
     private readonly value: PortNode;
 
-    constructor(value: PortNode) {
+    constructor(value: PortNode, profitSoFar: number) {
         this.value = value;
     }
 
@@ -11,7 +12,7 @@ class TreeNode {
         return 0;
     }
 
-    public addChild(childNode: TreeNode, profit: number): void {
+    public addChild(childNode: TreeNode): void {
     }
 
     public getChildren(): TreeNode[] {
@@ -21,25 +22,32 @@ class TreeNode {
     public getParent(): TreeNode | undefined {
         return undefined;
     }
+
+    public getDepth(): number {
+        // Root = depth 0
+        return 0;
+    }
 }
 
 class RouteTree {
     private readonly root: TreeNode;
 
     constructor(origin: PortNode) {
-        this.root = new TreeNode(origin);
+        this.root = this.buildTree(origin, 0);
     }
 
-    private buildTree(maxDepth: number): void {
-        const nodeStack: TreeNode[] = [this.root];
+    private buildTree(origin: PortNode, maxDepth: number, profitSoFar: number = 0): TreeNode {
+        let root: TreeNode = new TreeNode(origin, profitSoFar);
 
-        let node = nodeStack.pop();
-
-        for (let depth = 0; depth < maxDepth && node !== undefined; depth += 1) {
-            const children = node.getChildren();
-            children.forEach(child => nodeStack.push(child));
-
-            // Do something
+        if (maxDepth === 0) {
+            return root;
         }
+
+        for (const childNode of origin.getRoutes()) {
+            const childTree = this.buildTree(childNode.destination, maxDepth - 1, profitSoFar + childNode.profit());
+            root.addChild(childTree);
+        }
+
+        return root;
     }
 }
