@@ -43,8 +43,8 @@ class RouteTree {
             return root;
         }
 
-        for (const childNode of origin.getRoutes()) {
-            const childTree = this.buildTree(childNode.destination, maxDepth - 1, profitSoFar + childNode.profit());
+        for (const childRoute of origin.getRoutes()) {
+            const childTree = this.buildTree(childRoute.destination, maxDepth - 1, profitSoFar + childRoute.profit());
             root.addChild(childTree);
         }
 
