@@ -1,5 +1,4 @@
 import { PortNode } from './routeMap';
-import { Commodity } from './commodity';
 
 class TreeNode {
     private readonly value: PortNode;
