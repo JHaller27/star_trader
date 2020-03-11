@@ -1,5 +1,13 @@
+import { PortNode } from './routeMap';
+
 class TreeNode {
-    public maxProfit(): number {
+    private readonly value: PortNode;
+
+    constructor(value: PortNode) {
+        this.value = value;
+    }
+
+    public profit(): number {
         return 0;
     }
 
@@ -16,4 +24,22 @@ class TreeNode {
 }
 
 class RouteTree {
+    private readonly root: TreeNode;
+
+    constructor(origin: PortNode) {
+        this.root = new TreeNode(origin);
+    }
+
+    private buildTree(maxDepth: number): void {
+        const nodeStack: TreeNode[] = [this.root];
+
+        let node = nodeStack.pop();
+
+        for (let depth = 0; depth < maxDepth && node !== undefined; depth += 1) {
+            const children = node.getChildren();
+            children.forEach(child => nodeStack.push(child));
+
+            // Do something
+        }
+    }
 }
