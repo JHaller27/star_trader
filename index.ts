@@ -9,5 +9,6 @@ const generator = new RouteMapGenerator(reader);
 const routeMap: RouteMap = generator.getRouteMap();
 
 const routeTree: RouteTree = routeMap.asRouteTree(new Port('Stanton', 'Crusader', 'Ollisar'));
+const paths = routeTree.getPaths();
 
-console.log(routeMap.toString());
+console.log(paths[0]);

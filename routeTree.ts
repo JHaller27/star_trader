@@ -18,12 +18,12 @@ class TreeNode {
         this.childEdges.push(edge);
     }
 
-    public getFullEdgePath(): TreeEdge[] {
+    public getFullEdgePath(): TradePath {
         if (this.parentEdge === undefined) {
-            return [];
+            return new TradePath();
         }
 
-        const path: TreeEdge[] = this.parentEdge.parent.getFullEdgePath();
+        const path: TradePath = this.parentEdge.parent.getFullEdgePath();
         path.push(this.parentEdge);
 
         return path;
@@ -58,6 +58,18 @@ class TreeEdge {
     }
 }
 
+export class TradePath {
+    private readonly edges: TreeEdge[];
+
+    constructor() {
+        this.edges = [];
+    }
+
+    public push(edge: TreeEdge): void {
+        this.edges.push(edge);
+    }
+}
+
 export class RouteTree {
     private readonly root: TreeNode;
     private readonly leaves: TreeNode[];
@@ -67,8 +79,8 @@ export class RouteTree {
         this.root = this.buildTree(origin, 0);
     }
 
-    public getPaths(): TreeEdge[][] {
-        const paths: TreeEdge[][] = [];
+    public getPaths(): TradePath[] {
+        const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
             paths.push(leaf.getFullEdgePath());
