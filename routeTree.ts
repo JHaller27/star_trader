@@ -2,29 +2,26 @@ import { PortNode } from './routeMap';
 
 class TreeNode {
     private readonly value: PortNode;
+    private readonly profitSoFar: number;
+    private readonly children: TreeNode[];
 
     constructor(value: PortNode, profitSoFar: number) {
         this.value = value;
+        this.profitSoFar = profitSoFar;
+
+        this.children = [];
     }
 
     public profit(): number {
-        return 0;
+        return this.profitSoFar;
     }
 
     public addChild(childNode: TreeNode): void {
+        this.children.push(childNode);
     }
 
     public getChildren(): TreeNode[] {
-        return [];
-    }
-
-    public getParent(): TreeNode | undefined {
-        return undefined;
-    }
-
-    public getDepth(): number {
-        // Root = depth 0
-        return 0;
+        return this.children;
     }
 }
 
