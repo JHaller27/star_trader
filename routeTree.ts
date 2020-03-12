@@ -17,7 +17,11 @@ class TreeNode {
     }
 
     public addChild(childNode: TreeNode): void {
-        this.children.push(childNode);
+        const insertIdx = this.children.findIndex(child => {
+            return child.profit() >= childNode.profit();
+        });
+
+        this.children.splice(insertIdx, 0, childNode);
     }
 
     public getChildren(): TreeNode[] {
