@@ -113,6 +113,14 @@ export class Commodity implements IComparable {
         this.ppu2Absolute(maxUnits);
     }
 
+    public getPrice(): number {
+        return this.price;
+    }
+
+    public toProfitWith(other: Commodity): Commodity {
+        return new Commodity(this.name, this.price - other.price);
+    }
+
     private assertAbsolutePrice(): void {
         if (this.absolutePrice) {
             throw new Error('Commodity already an absolute price');

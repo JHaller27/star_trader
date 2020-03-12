@@ -128,4 +128,8 @@ export class Route {
     public hasSameDestination(other: Route): boolean {
         return this.destination.equals(other.destination);
     }
+
+    public getProfitCommodity(): Commodity {
+        return this.sourceCommodity.toProfitWith(this.destinationCommodity);
+    }
 }
