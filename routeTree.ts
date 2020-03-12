@@ -2,7 +2,7 @@ import { PortNode, Route } from './routeMap';
 import { Commodity } from './commodity';
 import { Ship } from './ship';
 
-class TreeNode {
+export class TreeNode {
     private readonly value: PortNode;
     private readonly childEdges: TreeEdge[];
     private parentEdge: TreeEdge | undefined;
@@ -42,7 +42,7 @@ class TreeNode {
     }
 }
 
-class TreeEdge {
+export class TreeEdge {
     public readonly parent: TreeNode;
     public readonly child: TreeNode;
     private readonly parentCommodity: Commodity;

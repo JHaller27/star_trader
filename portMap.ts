@@ -11,12 +11,16 @@ export class PortMap {
 
     public addBuying(port: Port, commodity: Commodity): void {
         this.ensurePortExists(port);
-        this.portCommoditiesMap.get(port)?.addBuying(commodity);
+
+        const tradeInfo = this.getTradeInfoFor(port);
+        tradeInfo.addBuying(commodity);
     }
 
     public addSelling(port: Port, commodity: Commodity): void {
         this.ensurePortExists(port);
-        this.portCommoditiesMap.get(port)?.addSelling(commodity);
+
+        const tradeInfo = this.getTradeInfoFor(port);
+        tradeInfo.addSelling(commodity);
     }
 
     public isBuying(port: Port, commodity: Commodity): boolean {
@@ -71,6 +75,15 @@ export class PortMap {
         return routeMap;
     }
 
+    private getTradeInfoFor(port: Port): TradeInfo {
+        const tradeInfo = this.portCommoditiesMap.get(port);
+        if (tradeInfo === undefined) {
+            throw new Error(`TradeInfo does not exist for port '${port.toString()}'`);
+        }
+
+        return tradeInfo;
+    }
+
     private findTradeToPorts(port: Port): Map<Port, Commodity[]> | undefined {
         const tradeInfo: TradeInfo | undefined = this.portCommoditiesMap.get(port);
         if (tradeInfo === undefined) {
@@ -84,11 +97,14 @@ export class PortMap {
             const buyingPorts: Port[] = this.findPortsBuying(commodity);
 
             for (const buyingPort of buyingPorts) {
-                if (!ports.has(buyingPort)) {
-                    ports.set(buyingPort, []);
-                }
+                const commodityList = ports.get(buyingPort);
 
-                ports.get(buyingPort)?.push(commodity);
+                if (commodityList === undefined) {
+                    ports.set(buyingPort, [commodity]);
+                }
+                else {
+                    commodityList.push(commodity);
+                }
             }
         }
 
