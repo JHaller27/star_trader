@@ -36,6 +36,10 @@ class TreeNode {
 
         this.parentEdge = parentEdge;
     }
+
+    public toPortString(): string {
+        return this.value.toShallowString();
+    }
 }
 
 class TreeEdge {
@@ -56,6 +60,10 @@ class TreeEdge {
 
         return currentCredits;
     }
+
+    public toString(): string {
+        return `Buy ${this.parentCommodity} at '${this.parent.toPortString()}' -> Sell ${this.childCommodity} in '${this.child.toPortString()}'`;
+    }
 }
 
 export class TradePath {
@@ -67,6 +75,10 @@ export class TradePath {
 
     public push(edge: TreeEdge): void {
         this.edges.push(edge);
+    }
+
+    public toString(): string {
+        return this.edges.map(e => e.toString()).join('\n');
     }
 }
 
