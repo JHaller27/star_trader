@@ -1,6 +1,7 @@
 import { Port } from "./port";
 import { TradeInfo, Commodity } from "./commodity";
 import { CompareResult } from "./sorting";
+import { RouteTree } from "./routeTree";
 
 export class RouteMap {
     private readonly portMap: Map<Port, PortNode>;
@@ -36,6 +37,16 @@ export class RouteMap {
         originNode.addRoute(route);
     }
 
+    public asRouteTree(originPort: Port): RouteTree {
+        const originNode = this.findPortNode(originPort);
+
+        if (originNode === undefined) {
+            throw new Error(`Origin '${originPort.toString()}' not found`);
+        }
+
+        return new RouteTree(originNode);
+    }
+
     public toString(): string {
         let s: string = '';
 
@@ -44,6 +55,16 @@ export class RouteMap {
         }
 
         return s;
+    }
+
+    private findPortNode(port: Port): PortNode | undefined {
+        for (const [portKey, portNode] of this.portMap.entries()) {
+            if (port.equals(portKey)) {
+                return portNode;
+            }
+        }
+
+        return undefined;
     }
 }
 
