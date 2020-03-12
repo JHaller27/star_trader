@@ -123,7 +123,7 @@ export class PortNode {
     }
 
     public getRoutes(): Route[] {
-        return [];
+        return this.routes;
     }
 }
 

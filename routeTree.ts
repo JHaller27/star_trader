@@ -16,6 +16,7 @@ export class TreeNode {
 
     public addChild(edge: TreeEdge): void {
         this.childEdges.push(edge);
+        edge.child.setParentEdge(edge);
     }
 
     public getFullEdgePath(): TradePath {
@@ -30,7 +31,7 @@ export class TreeNode {
     }
 
     public setParentEdge(parentEdge: TreeEdge): void {
-        if (parentEdge !== undefined) {
+        if (this.parentEdge !== undefined) {
             throw new Error('Parent TreeEdge already set');
         }
 
@@ -88,7 +89,7 @@ export class RouteTree {
 
     constructor(origin: PortNode) {
         this.leaves = [];
-        this.root = this.buildTree(origin, 0);
+        this.root = this.buildTree(origin, 1);
     }
 
     public getPaths(): TradePath[] {
@@ -116,8 +117,9 @@ export class RouteTree {
 
         for (const route of origin.getRoutes()) {
             const childTree = this.buildTree(route.destination, maxDepth - 1);
-            const childEdge = new TreeEdge(root, childTree, route);
-            root.addChild(childEdge);
+            const newEdge = new TreeEdge(root, childTree, route);
+
+            root.addChild(newEdge);
         }
 
         return root;

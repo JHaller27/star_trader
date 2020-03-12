@@ -8,7 +8,7 @@ const reader: IReader = new JSONReader('./data/commodities.json');
 const generator = new RouteMapGenerator(reader);
 const routeMap: RouteMap = generator.getRouteMap();
 
-const routeTree: RouteTree = routeMap.asRouteTree(new Port('Stanton', 'Crusader', 'Ollisar'));
+const routeTree: RouteTree = routeMap.asRouteTree(new Port('Stanton', 'Crusader', 'Port Ollisar'));
 const paths = routeTree.getPaths();
 
-console.log(paths[0]);
+console.log(paths[0].toString());
