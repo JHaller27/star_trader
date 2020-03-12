@@ -52,7 +52,9 @@ class TreeEdge {
     }
 
     public profit(ship: Ship): number {
-        return 0;
+        const currentCredits = ship.trade(this.parentCommodity, this.childCommodity);
+
+        return currentCredits;
     }
 }
 
