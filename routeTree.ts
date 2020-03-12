@@ -67,7 +67,7 @@ export class RouteTree {
         this.root = this.buildTree(origin, 0);
     }
 
-    public getBestPaths(): TreeEdge[][] {
+    public getPaths(): TreeEdge[][] {
         const paths: TreeEdge[][] = [];
 
         for (const leaf of this.leaves) {
