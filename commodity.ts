@@ -100,25 +100,40 @@ export class Commodity implements IComparable {
         return this.name === other.name;
     }
 
-    public ppu2Absolute(units: number) {
-        this.assertAbsolutePrice();
+    public purchaseMaxUnits(investment: number, unitCapacity: number): Commodity {
+        const absoluteCommodity = new Commodity(this.name, this.price);
 
-        this.units = units;
-        this.price = this.price * this.units;
-        this.absolutePrice = true;
+        const maxUnits = absoluteCommodity.getMaxUnits(investment, unitCapacity);
+        absoluteCommodity.ppu2Absolute(maxUnits);
+
+        return absoluteCommodity;
     }
 
-    public purchaseMaxUnits(investment: number, unitCapacity: number): void {
-        const maxUnits = this.getMaxUnits(investment, unitCapacity);
-        this.ppu2Absolute(maxUnits);
+    public sellAllUnitsAt(other: Commodity): number {
+        const units = this.units;
+        this.units = 0;
+
+        return units * other.price;
     }
 
     public getPrice(): number {
         return this.price;
     }
 
-    public toProfitWith(other: Commodity): Commodity {
-        return new Commodity(this.name, this.price - other.price);
+    public getUnits(): number {
+        return this.units;
+    }
+
+    public profitWith(other: Commodity): number {
+        return this.getPrice() - other.getPrice();
+    }
+
+    private ppu2Absolute(units: number): void {
+        this.assertAbsolutePrice();
+
+        this.units = units;
+        this.price = this.price * this.units;
+        this.absolutePrice = true;
     }
 
     private assertAbsolutePrice(): void {

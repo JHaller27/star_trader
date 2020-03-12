@@ -108,8 +108,8 @@ export class PortNode {
 
 export class Route {
     public readonly destination: PortNode;
-    private readonly sourceCommodity: Commodity;
-    private readonly destinationCommodity: Commodity;
+    public readonly sourceCommodity: Commodity;
+    public readonly destinationCommodity: Commodity;
 
     constructor(destination: PortNode, sourceCommodity: Commodity, destinationCommodity: Commodity) {
         this.destination =  destination;

@@ -1,32 +1,21 @@
-import { PortNode } from './routeMap';
+import { PortNode, Route } from './routeMap';
 import { Commodity } from './commodity';
+import { Ship } from './ship';
 
 class TreeNode {
     private readonly value: PortNode;
-    private readonly profit: number;
     private readonly childEdges: TreeEdge[];
     private parentEdge: TreeEdge | undefined;
 
-    constructor(value: PortNode, profitSoFar: number) {
+    constructor(value: PortNode) {
         this.value = value;
-        this.profit = profitSoFar;
 
         this.childEdges = [];
         this.parentEdge = undefined;
     }
 
-    public profitSoFar(): number {
-        return this.profit;
-    }
-
-    public addChild(childNode: TreeNode, edge: TreeEdge): void {
-        childNode.setParentEdge(edge);
-
-        const insertIdx = this.childEdges.findIndex(childEdge => {
-            return childEdge.profit() >= edge.profit();
-        });
-
-        this.childEdges.splice(insertIdx, 0, edge);
+    public addChild(edge: TreeEdge): void {
+        this.childEdges.push(edge);
     }
 
     public getFullEdgePath(): TreeEdge[] {
@@ -52,28 +41,28 @@ class TreeNode {
 class TreeEdge {
     public readonly parent: TreeNode;
     public readonly child: TreeNode;
-    private readonly commodity: Commodity;
+    private readonly parentCommodity: Commodity;
+    private readonly childCommodity: Commodity;
 
-    constructor(parent: TreeNode, child: TreeNode, commodity: Commodity) {
+    constructor(parent: TreeNode, child: TreeNode, route: Route) {
         this.parent = parent;
         this.child = child;
-        this.commodity = commodity;
+        this.parentCommodity = route.sourceCommodity;
+        this.childCommodity = route.destinationCommodity;
     }
 
-    public profit(): number {
-        return this.commodity.getPrice();
+    public profit(ship: Ship): number {
+        return 0;
     }
 }
 
 export class RouteTree {
     private readonly root: TreeNode;
     private readonly leaves: TreeNode[];
-    private readonly ship: Ship;
 
-    constructor(origin: PortNode, ship: Ship) {
+    constructor(origin: PortNode) {
         this.leaves = [];
         this.root = this.buildTree(origin, 0);
-        this.ship = ship;
     }
 
     public getBestPaths(): TreeEdge[][] {
@@ -87,15 +76,11 @@ export class RouteTree {
     }
 
     private addLeaf(leafNode: TreeNode): void {
-        const insertIdx = this.leaves.findIndex(leaf => {
-            return leaf.profitSoFar() >= leafNode.profitSoFar();
-        });
-
-        this.leaves.splice(insertIdx, 0, leafNode);
+        this.leaves.push(leafNode);
     }
 
-    private buildTree(origin: PortNode, maxDepth: number, profitSoFar: number = 0): TreeNode {
-        let root: TreeNode = new TreeNode(origin, profitSoFar);
+    private buildTree(origin: PortNode, maxDepth: number): TreeNode {
+        let root: TreeNode = new TreeNode(origin);
 
         if (maxDepth === 0) {
             this.addLeaf(root);
@@ -104,9 +89,9 @@ export class RouteTree {
         }
 
         for (const route of origin.getRoutes()) {
-            const childTree = this.buildTree(route.destination, maxDepth - 1, profitSoFar + route.profit());
-            const childEdge = new TreeEdge(root, childTree, route.getProfitCommodity());
-            root.addChild(childTree, childEdge);
+            const childTree = this.buildTree(route.destination, maxDepth - 1);
+            const childEdge = new TreeEdge(root, childTree, route);
+            root.addChild(childEdge);
         }
 
         return root;
