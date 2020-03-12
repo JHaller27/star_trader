@@ -11,4 +11,7 @@ const routeMap: RouteMap = generator.getRouteMap();
 const routeTree: RouteTree = routeMap.asRouteTree(new Port('Stanton', 'Crusader', 'Port Ollisar'));
 const paths = routeTree.getPaths();
 
-console.log(paths[0].toString());
+for (const path of paths) {
+    console.log(path.toString());
+    console.log();
+}
