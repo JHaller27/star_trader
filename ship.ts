@@ -1,5 +1,7 @@
 import { Commodity } from "./commodity";
 
+const UNITS_PER_SCU = 1000;
+
 /**
  * Ship constraints - max investment, max cargo capacity, etc.
  */
@@ -11,9 +13,9 @@ export class Ship {
     private credits: number;
     private curentCargo: Commodity | undefined;
 
-    constructor(initCredits: number, maxCapacity: number, maxHops: number) {
+    constructor(initCredits: number, maxSCU: number, maxHops: number) {
         this.initialCredits = initCredits;
-        this.maxCapacity = maxCapacity;
+        this.maxCapacity = maxSCU * UNITS_PER_SCU;
         this.maxHops = maxHops;
 
         this.credits = this.initialCredits;
