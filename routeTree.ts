@@ -78,6 +78,10 @@ export class TradePath {
         this.edges.push(edge);
     }
 
+    public traverse(ship: Ship): void {
+        ship.reset();
+    }
+
     public toString(): string {
         return this.edges.map(e => e.toString()).join('\n');
     }
@@ -96,7 +100,9 @@ export class RouteTree {
         const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
-            paths.push(leaf.getFullEdgePath());
+            const path = leaf.getFullEdgePath();
+            path.traverse(ship);
+            paths.push(path);
         }
 
         return paths;

@@ -4,6 +4,7 @@ import { Commodity } from "./commodity";
  * Ship constraints - max investment, max cargo capacity, etc.
  */
 export class Ship {
+    private readonly initialCredits: number ;
     private readonly maxCapacity: number;
     private readonly maxHops: number;
 
@@ -11,11 +12,17 @@ export class Ship {
     private curentCargo: Commodity | undefined;
 
     constructor(initCredits: number, maxCapacity: number, maxHops: number) {
-        this.credits = initCredits;
+        this.initialCredits = initCredits;
         this.maxCapacity = maxCapacity;
         this.maxHops = maxHops;
 
+        this.credits = this.initialCredits;
         this.curentCargo = undefined;
+    }
+
+    public reset(): void {
+        this.credits = this.initialCredits;
+        this.emptyCargo();
     }
 
     public getMaxHops(): number {
