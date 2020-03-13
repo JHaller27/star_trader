@@ -100,18 +100,20 @@ export class TradePath {
 export class RouteTree {
     private readonly root: TreeNode;
     private readonly leaves: TreeNode[];
+    private readonly ship: Ship;
 
-    constructor(origin: PortNode) {
+    constructor(origin: PortNode, ship: Ship) {
         this.leaves = [];
-        this.root = this.buildTree(origin, 1);
+        this.root = this.buildTree(origin, ship.getMaxHops());
+        this.ship = ship;
     }
 
-    public getPaths(ship: Ship): TradePath[] {
+    public getPaths(): TradePath[] {
         const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
             const path = leaf.getFullEdgePath();
-            path.traverse(ship);
+            path.traverse(this.ship);
             paths.push(path);
         }
 
