@@ -17,7 +17,7 @@ export interface Location {
 }
 
 export interface Port {
-    location: Location,
+    location: string[],
     commodities: Commodity[]
 }
 

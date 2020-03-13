@@ -32,11 +32,7 @@ export class RouteMapGenerator {
         this.portMap = new PortMap();
 
         for (const rawPort of this.data) {
-            const port: Port = new Port([
-                rawPort.location.star,
-                rawPort.location.satellite,
-                rawPort.location.port
-            ]);
+            const port: Port = new Port(rawPort.location);
 
             for (const rawCommodity of rawPort.commodities) {
                 if (rawCommodity.buying !== null) {

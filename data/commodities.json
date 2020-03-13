@@ -1,10 +1,10 @@
 [
     {
-        "location": {
-            "star": "Stanton",
-            "satellite": "Crusader",
-            "port": "Port Ollisar"
-        },
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Port Olisar"
+        ],
         "commodities": [
             {
                 "name": "Hydrogen",
@@ -19,11 +19,11 @@
         ]
     },
     {
-        "location": {
-            "star": "Stanton",
-            "satellite": "Crusader",
-            "port": "GrimHEX"
-        },
+        "location": [
+            "Stanton",
+            "Crusader",
+            "GrimHEX"
+        ],
         "commodities": [
             {
                 "name": "Hydrogen",
