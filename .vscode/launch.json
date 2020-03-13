@@ -5,6 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/pyCommodities/commodityCsv2Json.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/data/StarCitizenCommodities.csv",
+                "${workspaceFolder}/data/commodities.json"
+            ]
+        },
+        {
             "preLaunchTask": "tsc build",
             "type": "node",
             "request": "launch",
