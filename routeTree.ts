@@ -88,6 +88,10 @@ export class TradePath {
         ship.reset();
     }
 
+    public hasProfit(): boolean {
+        return this.netProfit !== 0;
+    }
+
     public compareTo(other: TradePath): number {
         return this.netProfit - other.netProfit;
     }
@@ -114,7 +118,9 @@ export class RouteTree {
         for (const leaf of this.leaves) {
             const path = leaf.getFullEdgePath();
             path.traverse(this.ship);
-            paths.push(path);
+            if (path.hasProfit()) {
+                paths.push(path);
+            }
         }
 
         // Invert compareTo to sort descending instead of default ascending
