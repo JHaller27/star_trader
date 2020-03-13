@@ -29,11 +29,17 @@ export class Ship {
         return this.maxHops;
     }
 
-    public trade(buy: Commodity, sell: Commodity): number {
+    public getProfit(): number {
+        return this.credits - this.initialCredits;
+    }
+
+    public trade(buy: Commodity, sell: Commodity): void {
         this.purchaseMaxUnitsOf(buy);
         this.sellAllUnitsAt(sell);
+    }
 
-        return this.credits;
+    public toString(): string {
+        return `Wallet: ${this.credits} UEC | Max Cargo: ${this.maxCapacity}`;
     }
 
     private purchaseMaxUnitsOf(commodity: Commodity): void {

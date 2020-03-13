@@ -125,11 +125,13 @@ export class Commodity implements IComparable {
     }
 
     public profitWith(other: Commodity): number {
+        this.assertAbsolutePrice();
+
         return this.getPrice() - other.getPrice();
     }
 
     private ppu2Absolute(units: number): void {
-        this.assertAbsolutePrice();
+        this.assertPerUnitPrice();
 
         this.units = units;
         this.price = this.price * this.units;
@@ -137,14 +139,14 @@ export class Commodity implements IComparable {
     }
 
     private assertAbsolutePrice(): void {
-        if (this.absolutePrice) {
-            throw new Error('Commodity already an absolute price');
+        if (!this.absolutePrice) {
+            throw new Error('Commodity should be an absolute price');
         }
     }
 
     private assertPerUnitPrice(): void {
-        if (!this.absolutePrice) {
-            throw new Error('Commodity should be an absolute price');
+        if (this.absolutePrice) {
+            throw new Error('Commodity should not be an absolute price');
         }
     }
 

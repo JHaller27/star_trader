@@ -56,10 +56,8 @@ export class TreeEdge {
         this.childCommodity = route.destinationCommodity;
     }
 
-    public profit(ship: Ship): number {
-        const currentCredits = ship.trade(this.parentCommodity, this.childCommodity);
-
-        return currentCredits;
+    public trade(ship: Ship): void {
+        ship.trade(this.parentCommodity, this.childCommodity);
     }
 
     public toString(): string {
@@ -69,9 +67,11 @@ export class TreeEdge {
 
 export class TradePath {
     private readonly edges: TreeEdge[];
+    private netProfit: number;
 
     constructor() {
         this.edges = [];
+        this.netProfit = 0;
     }
 
     public push(edge: TreeEdge): void {
@@ -79,11 +79,21 @@ export class TradePath {
     }
 
     public traverse(ship: Ship): void {
+        for (const edge of this.edges) {
+            edge.trade(ship);
+        }
+
+        this.netProfit = ship.getProfit();
+
         ship.reset();
     }
 
+    public compareTo(other: TradePath): number {
+        return this.netProfit - other.netProfit;
+    }
+
     public toString(): string {
-        return this.edges.map(e => e.toString()).join('\n');
+        return this.edges.map(e => e.toString()).join('\n') + `\nNet profit: ${this.netProfit} UEC`;
     }
 }
 
@@ -96,7 +106,7 @@ export class RouteTree {
         this.root = this.buildTree(origin, 1);
     }
 
-    public getPaths(): TradePath[] {
+    public getPaths(ship: Ship): TradePath[] {
         const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
@@ -105,7 +115,8 @@ export class RouteTree {
             paths.push(path);
         }
 
-        return paths;
+        // Invert compareTo to sort descending instead of default ascending
+        return paths.sort((p1: TradePath, p2: TradePath) => -1 * p1.compareTo(p2));
     }
 
     private addLeaf(leafNode: TreeNode): void {
