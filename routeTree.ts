@@ -93,7 +93,7 @@ export class TradePath {
     }
 
     public toString(): string {
-        return this.edges.map(e => e.toString()).join('\n') + `\nNet profit: ${this.netProfit} UEC`;
+        return this.edges.map(e => e.toString()).join('\n') + `\nNet profit: ${Math.floor(this.netProfit)} UEC`;
     }
 }
 
