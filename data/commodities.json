@@ -7,14 +7,104 @@
         ],
         "commodities": [
             {
-                "name": "Hydrogen",
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Agricultural Supplies",
                 "buying": null,
-                "selling": 1.23
+                "selling": 1.04
+            },
+            {
+                "name": "Aluminum",
+                "buying": 1.3,
+                "selling": null
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 4.21,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 2.64,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 6.67,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.87,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 6.4,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Laranite",
+                "buying": 28.26,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": null,
+                "selling": 17.4
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": 1.48,
+                "selling": null
             },
             {
                 "name": "Scrap",
-                "selling": null,
-                "buying": 0.01
+                "buying": 1.85,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.9,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.02,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
             }
         ]
     },
@@ -22,18 +112,2818 @@
         "location": [
             "Stanton",
             "Crusader",
-            "GrimHEX"
+            "Yela",
+            "Grim Hex"
         ],
         "commodities": [
             {
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.18,
+                "selling": null
+            },
+            {
+                "name": "Aluminum",
+                "buying": 1.3,
+                "selling": null
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 4.35,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 2.7,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 6.91,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.8,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 6.4,
+                "selling": null
+            },
+            {
                 "name": "Hydrogen",
-                "buying": 2.34,
-                "selling": 2.34
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Laranite",
+                "buying": 30.95,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": 1.55,
+                "selling": null
             },
             {
                 "name": "Scrap",
                 "buying": null,
-                "selling": 0.05
+                "selling": 1.48
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.9,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.05,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Yela",
+            "ArcCorp Mining Area 157"
+        ],
+        "commodities": [
+            {
+                "name": "Astatine",
+                "buying": null,
+                "selling": 7.9
+            },
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.31
+            },
+            {
+                "name": "Flourine",
+                "buying": null,
+                "selling": 2.35
+            },
+            {
+                "name": "Hydrogen",
+                "buying": null,
+                "selling": 0.9
+            },
+            {
+                "name": "Iodine",
+                "buying": null,
+                "selling": 0.36
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.51,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Yela",
+            "Benson Mining Outpost"
+        ],
+        "commodities": [
+            {
+                "name": "Astatine",
+                "buying": null,
+                "selling": 7.94
+            },
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.3
+            },
+            {
+                "name": "Flourine",
+                "buying": null,
+                "selling": 2.35
+            },
+            {
+                "name": "Hydrogen",
+                "buying": null,
+                "selling": 0.9
+            },
+            {
+                "name": "Iodine",
+                "buying": null,
+                "selling": 0.35
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.58,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Yela",
+            "Deakins Research Outpost"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Astatine",
+                "buying": 8.07,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.7,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": null,
+                "selling": 17.23
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Yela",
+            "Jumptown (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.14,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Yela",
+            "The Baker / NT-999-XX (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Daymar",
+            "ArcCorp Mining Area 141"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": null,
+                "selling": 24.82
+            },
+            {
+                "name": "Beryl",
+                "buying": null,
+                "selling": 4.06
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.3
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.56,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": null,
+                "selling": 1.25
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.64
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Daymar",
+            "Bountiful Harvest Hydroponics"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.88,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": null,
+                "selling": 1.2
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": null,
+                "selling": 1.32
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Daymar",
+            "Brio's Breaker Yard (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.95,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": 1.85,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.9,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Daymar",
+            "Kudre Ore"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": null,
+                "selling": 24.56
+            },
+            {
+                "name": "Beryl",
+                "buying": null,
+                "selling": 4.05
+            },
+            {
+                "name": "Gold",
+                "buying": null,
+                "selling": 5.43
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.72,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": null,
+                "selling": 1.25
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.76
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Daymar",
+            "Nuen Waste Managment (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Daymar",
+            "Shubin Mining Facility SCD-1"
+        ],
+        "commodities": [
+            {
+                "name": "Beryl",
+                "buying": null,
+                "selling": 4.06
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.3
+            },
+            {
+                "name": "Gold",
+                "buying": null,
+                "selling": 5.9
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.64,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": null,
+                "selling": 1.26
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.8
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Cellin",
+            "Gallete Family Farms"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.54,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": null,
+                "selling": 1.2
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": null,
+                "selling": 1.32
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Cellin",
+            "Hickes Research Outpost"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Astatine",
+                "buying": 8.05,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.92,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": null,
+                "selling": 17.12
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Cellin",
+            "Terra Mills Hydrofarm"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.14,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.56,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Cellin",
+            "Tram & Myers Mining"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.34
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Laranite",
+                "buying": null,
+                "selling": 27.45
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.55,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.95
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Crusader",
+            "Cellin",
+            "Private Property (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.2,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 7.35,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 6.4,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "CRU L1",
+            "R&R CRU-L1"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 4.39,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.64,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.52,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.49
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "CRU L4",
+            "R&R CRU-L4"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.32,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.39,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.41
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.1,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "CRU L4",
+            "Terminal (Hidden) "
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 0.22,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 0.55,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.23,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 0.54,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "CRU L5",
+            "R&R CRU-L5"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.75,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.93,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "CRU L5",
+            "R&R CRU-L5",
+            "Terminal (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 0.22,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 1.04,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 0.8,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 0.54,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 0.39,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.12,
+                "selling": null
+            },
+            {
+                "name": "Laranite",
+                "buying": 8.86,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.23,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Delamar",
+            "Levski"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 4.35,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 2.7,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 6.93,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.93,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 6.4,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": null,
+                "selling": 0.91
+            },
+            {
+                "name": "Iodine",
+                "buying": null,
+                "selling": 0.36
+            },
+            {
+                "name": "Laranite",
+                "buying": 29.24,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.88,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": null,
+                "selling": 1.34
+            },
+            {
+                "name": "Scrap",
+                "buying": 1.71,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.73,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.05,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Everus Harbor"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.14,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.34,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Lorville -  Admin Office"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.3,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.07,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Lorville -  Central Business District (CBD)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.2,
+                "selling": null
+            },
+            {
+                "name": "Aluminum",
+                "buying": 1.3,
+                "selling": null
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 4.35,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 2.7,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 7.35,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.95,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 6.4,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Laranite",
+                "buying": 31.01,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": 1.55,
+                "selling": null
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.9,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.05,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "HDMS-Edmonds"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.05,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "HDMS-Hadley"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "HDMS-Oparei"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.91,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "HDMS-Pinewood"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.8,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "HDMS-Stanhope"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.3
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": 0.01,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "HDMS-Thedus"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.89,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Reclamation and Disposal Orinth (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Beryl",
+                "buying": 4.35,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 2.7,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 7.35,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": 1.55,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": 1.85,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.9,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Arial",
+            "HDMS-Bezdek"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Laranite",
+                "buying": null,
+                "selling": 25.68
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.1
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.55
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Arial",
+            "HDMS-Lathan"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Laranite",
+                "buying": null,
+                "selling": 26.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.12
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.55
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Aberdeen",
+            "HDMS-Anderson"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Gold",
+                "buying": null,
+                "selling": 5.4
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Aberdeen",
+            "HDMS-Norgaard"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Gold",
+                "buying": null,
+                "selling": 5.4
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Magda",
+            "HDMS-Hahn"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.3
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 6.1
+            },
+            {
+                "name": "Flourine",
+                "buying": null,
+                "selling": 2.35
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Magda",
+            "HDMS-Pearlman"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Gold",
+                "buying": null,
+                "selling": 5.4
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Ita",
+            "HDMS-Ryder"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Astatine",
+                "buying": null,
+                "selling": 7.0
+            },
+            {
+                "name": "Beryl",
+                "buying": null,
+                "selling": 4.05
+            },
+            {
+                "name": "Hydrogen",
+                "buying": null,
+                "selling": 0.9
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "Hurston",
+            "Ita",
+            "HDMS-Woodruff"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": null,
+                "selling": 1.0
+            },
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Astatine",
+                "buying": null,
+                "selling": 7.1
+            },
+            {
+                "name": "Beryl",
+                "buying": null,
+                "selling": 4.05
+            },
+            {
+                "name": "Hydrogen",
+                "buying": null,
+                "selling": 0.9
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "HUR L1",
+            "R&R HUR-L1"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 17.92,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "HUR L2",
+            "R&R HUR-L2"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.36,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "HUR L3",
+            "R&R HUR-L3"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.53,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.48
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "HUR L4",
+            "R&R HUR-L4"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.46,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.36
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "HUR L5",
+            "R&R HUR-L5"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.36,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Baijini Point"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.85,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.1,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.02
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "AREA 18 - IO-North Tower (ArcCorp Tower)"
+        ],
+        "commodities": [
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "AREA 18 - Trade Development Division (TDD)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Aluminum",
+                "buying": 1.3,
+                "selling": null
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Beryl",
+                "buying": 4.35,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Corundum",
+                "buying": 2.7,
+                "selling": null
+            },
+            {
+                "name": "Diamond",
+                "buying": 7.35,
+                "selling": null
+            },
+            {
+                "name": "Flourine",
+                "buying": 2.95,
+                "selling": null
+            },
+            {
+                "name": "Gold",
+                "buying": 6.4,
+                "selling": null
+            },
+            {
+                "name": "Iodine",
+                "buying": 0.45,
+                "selling": null
+            },
+            {
+                "name": "Laranite",
+                "buying": 30.1,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": 1.55,
+                "selling": null
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Titanium",
+                "buying": 8.9,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.05,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Lyria",
+            "Humblot Mining"
+        ],
+        "commodities": [
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.3
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.3
+            },
+            {
+                "name": "Flourine",
+                "buying": null,
+                "selling": 2.35
+            },
+            {
+                "name": "Gold",
+                "buying": null,
+                "selling": 5.4
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 18.86,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.1
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Lyria",
+            "Loveridge Mineral Reserve"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": null,
+                "selling": 23.3
+            },
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.3
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.3
+            },
+            {
+                "name": "Flourine",
+                "buying": null,
+                "selling": 2.35
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.1
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Lyria",
+            "Paradise Cove (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Lyria",
+            "Shubin Mining Facility SAL-2"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": null,
+                "selling": 22.5
+            },
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.31
+            },
+            {
+                "name": "Corundum",
+                "buying": null,
+                "selling": 2.3
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.1
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Lyria",
+            "Shubin Mining Facility SAL-5"
+        ],
+        "commodities": [
+            {
+                "name": "Beryl",
+                "buying": null,
+                "selling": 4.05
+            },
+            {
+                "name": "Chlorine",
+                "buying": null,
+                "selling": 1.3
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": null,
+                "selling": 1.25
+            },
+            {
+                "name": "Titanium",
+                "buying": null,
+                "selling": 7.1
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Lyria",
+            "The Orphanage (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricultural Supplies",
+                "buying": 1.2,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.11,
+                "selling": null
+            },
+            {
+                "name": "Laranite",
+                "buying": 31.01,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Revenant Tree Pollen",
+                "buying": 1.69,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Walla",
+            "ArcCorp Mining Area 045"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Laranite",
+                "buying": null,
+                "selling": 25.27
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Quartz",
+                "buying": null,
+                "selling": 1.25
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.55
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Walla",
+            "ArcCorp Mining Area 048"
+        ],
+        "commodities": [
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.85
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.55
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Walla",
+            "ArcCorp Mining Area 056"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": null,
+                "selling": 1.11
+            },
+            {
+                "name": "Astatine",
+                "buying": null,
+                "selling": 7.17
+            },
+            {
+                "name": "Diamond",
+                "buying": null,
+                "selling": 5.91
+            },
+            {
+                "name": "Iodine",
+                "buying": null,
+                "selling": 0.35
+            },
+            {
+                "name": "Laranite",
+                "buying": null,
+                "selling": 27.1
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.55
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Walla",
+            "ArcCorp Mining Area 061"
+        ],
+        "commodities": [
+            {
+                "name": "Astatine",
+                "buying": null,
+                "selling": 7.31
+            },
+            {
+                "name": "Iodine",
+                "buying": null,
+                "selling": 0.35
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.25,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.5,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": null,
+                "selling": 3.55
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.01
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ArcCorp",
+            "Walla",
+            "Samson & Son's Salvage Center (Hidden)"
+        ],
+        "commodities": [
+            {
+                "name": "Agricium",
+                "buying": 27.5,
+                "selling": null
+            },
+            {
+                "name": "Astatine",
+                "buying": 9.0,
+                "selling": null
+            },
+            {
+                "name": "Chlorine",
+                "buying": 1.7,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": 1.85,
+                "selling": null
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.05,
+                "selling": null
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "ARC L1",
+            "R&R ARC-L1"
+        ],
+        "commodities": [
+            {
+                "name": "Medical Supplies",
+                "buying": 19.02,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.55,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.44
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "MicroTech",
+            "Port Tressler"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.36,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.02
+            }
+        ]
+    },
+    {
+        "location": [
+            "Stanton",
+            "MIC L1",
+            "R&R MIC-L1"
+        ],
+        "commodities": [
+            {
+                "name": "Aluminum",
+                "buying": 1.33,
+                "selling": null
+            },
+            {
+                "name": "Hydrogen",
+                "buying": 1.12,
+                "selling": null
+            },
+            {
+                "name": "Medical Supplies",
+                "buying": 19.36,
+                "selling": null
+            },
+            {
+                "name": "Processed Food",
+                "buying": 1.56,
+                "selling": null
+            },
+            {
+                "name": "Scrap",
+                "buying": null,
+                "selling": 1.35
+            },
+            {
+                "name": "Tungstun",
+                "buying": 4.1,
+                "selling": null
+            },
+            {
+                "name": "Waste",
+                "buying": null,
+                "selling": 0.02
             }
         ]
     }
