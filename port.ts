@@ -1,19 +1,29 @@
 export class Port {
-    private readonly star: string;
-    private readonly satellite: string;
-    private readonly port: string;
+    private readonly locationPath: string[];
 
     constructor(star: string, satellite: string, port: string) {
-        this.star = star;
-        this.satellite = satellite;
-        this.port = port;
+        this.locationPath = [
+            star,
+            satellite,
+            port,
+        ];
     }
 
     public toString(): string {
-        return `${this.star} > ${this.satellite} > ${this.port}`;
+        return this.locationPath.join(' > ');
     }
 
     public equals(other: Port): boolean {
-        return this.star === other.star && this.satellite === other.satellite && this.port === other.port;
+        if (this.locationPath.length !== other.locationPath.length) {
+            return false;
+        }
+
+        for (let idx = 0; idx < this.locationPath.length; idx++) {
+            if (this.locationPath[idx] !== other.locationPath[idx]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
