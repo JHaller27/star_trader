@@ -130,6 +130,10 @@ export class Commodity implements IComparable {
         return this.getPrice() - other.getPrice();
     }
 
+    public isNothing(): boolean {
+        return name === Commodity.NOTHING;
+    }
+
     private ppu2Absolute(units: number): void {
         this.assertPerUnitPrice();
 

@@ -120,7 +120,7 @@ export class PortNode {
     }
 
     public equals(other: PortNode): boolean {
-        return this.port === other.port;
+        return this.port.equals(other.port);
     }
 
     public getRoutes(): Route[] {

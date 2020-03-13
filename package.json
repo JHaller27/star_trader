@@ -9,6 +9,9 @@
   "author": "James Haller",
   "license": "ISC",
   "dependencies": {
+  },
+  "devDependencies": {
+    "typescript": "^3.8.3",
     "@types/node": "^13.9.0"
   }
 }

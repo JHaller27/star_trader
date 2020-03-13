@@ -41,6 +41,10 @@ export class TreeNode {
     public toPortString(): string {
         return this.value.toShallowString();
     }
+
+    public equals(other: TreeNode): boolean {
+        return this.value.equals(other.value);
+    }
 }
 
 export class TreeEdge {
@@ -60,6 +64,17 @@ export class TreeEdge {
         ship.trade(this.parentCommodity, this.childCommodity);
     }
 
+    public canMerge(other: TreeEdge): boolean {
+        return this.childCommodity.isNothing() && other.parentCommodity.isNothing();
+    }
+
+    public mergedWith(other: TreeEdge): TreeEdge {
+        const fakeNode: PortNode = undefined as unknown as PortNode;
+        const tempRoute = new Route(fakeNode, this.parentCommodity, other.childCommodity);
+
+        return new TreeEdge(this.parent, other.child, tempRoute);
+    }
+
     public toString(): string {
         return `Buy ${this.parentCommodity} at '${this.parent.toPortString()}' -> Sell ${this.childCommodity} in '${this.child.toPortString()}'`;
     }
@@ -75,6 +90,14 @@ export class TradePath {
     }
 
     public push(edge: TreeEdge): void {
+        const lastEdge = this.edges[-1];
+
+        if (lastEdge !== undefined && lastEdge.canMerge(edge)) {
+            this.edges.pop();
+
+            edge = lastEdge.mergedWith(edge);
+        }
+
         this.edges.push(edge);
     }
 
