@@ -17,7 +17,7 @@ console.log();
 const origin = new Port(['Stanton', 'Crusader', 'Port Olisar']);
 
 const routeTree: RouteTree = routeMap.asRouteTree(origin, ship);
-const paths = routeTree.getPaths();
+const paths = routeTree.getPaths(20);
 
 for (const path of paths) {
     console.log(path.toString());

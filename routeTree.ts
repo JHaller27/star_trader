@@ -135,7 +135,7 @@ export class RouteTree {
         this.ship = ship;
     }
 
-    public getPaths(): TradePath[] {
+    public getPaths(countLimit?: number): TradePath[] {
         const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
@@ -143,6 +143,10 @@ export class RouteTree {
             path.traverse(this.ship);
             if (path.hasProfit()) {
                 paths.push(path);
+            }
+
+            if (countLimit !== undefined && paths.length >= countLimit) {
+                break;
             }
         }
 
