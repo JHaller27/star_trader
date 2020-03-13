@@ -12,7 +12,8 @@
             "console": "integratedTerminal",
             "args": [
                 "${workspaceFolder}/data/StarCitizenCommodities.csv",
-                "${workspaceFolder}/data/commodities.json"
+                "${workspaceFolder}/data/commodities.json",
+                "--no-vice"
             ]
         },
         {
