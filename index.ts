@@ -9,7 +9,7 @@ const reader: IReader = new JSONReader('./data/commodities.json');
 const generator = new RouteMapGenerator(reader);
 const routeMap: RouteMap = generator.getRouteMap();
 
-const ship = new Ship(1000000, 66, 3);
+const ship = new Ship(1000000, 66, 5);
 
 console.log(ship.toString());
 console.log();
