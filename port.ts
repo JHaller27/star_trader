@@ -1,12 +1,8 @@
 export class Port {
     private readonly locationPath: string[];
 
-    constructor(star: string, satellite: string, port: string) {
-        this.locationPath = [
-            star,
-            satellite,
-            port,
-        ];
+    constructor(locationPath: string[]) {
+        this.locationPath = locationPath;
     }
 
     public toString(): string {
