@@ -10,7 +10,11 @@ export class TreeNode {
 
     private readonly shipMomento: ShipMomento;
 
-    constructor(value: PortNode, ship: Ship) {
+    constructor(value: PortNode | Route, ship: Ship) {
+        if (value instanceof Route) {
+            value = value.destination;
+        }
+
         this.value = value;
 
         this.childEdges = [];
@@ -24,13 +28,13 @@ export class TreeNode {
         edge.child.setParentEdge(edge);
     }
 
-    public getFullEdgePath(): TradePath {
+    public getFullEdgePath(ship: Ship): TradePath {
         if (this.parentEdge === undefined) {
             return new TradePath();
         }
 
-        const path: TradePath = this.parentEdge.parent.getFullEdgePath();
-        path.push(this.parentEdge);
+        const path: TradePath = this.parentEdge.parent.getFullEdgePath(ship);
+        path.push(this.parentEdge, ship);
 
         return path;
     }
@@ -52,10 +56,18 @@ export class TreeNode {
     }
 
     public generateChildren(ship: Ship): TreeEdge[] {
-        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, new TreeNode(route.destination, ship), route));
+        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, route, ship));
         childEdges.forEach(e => e.parent.addChild(e));
 
         return childEdges;
+    }
+
+    public newParentRoute(parentCommodity: Commodity, endCommodity: Commodity): Route {
+        return new Route(this.value, parentCommodity, endCommodity);
+    }
+
+    public restoreShip(ship: Ship): void {
+        ship.restore(this.shipMomento);
     }
 }
 
@@ -65,14 +77,21 @@ export class TreeEdge {
     private readonly parentCommodity: Commodity;
     private readonly childCommodity: Commodity;
 
-    constructor(parent: TreeNode, child: TreeNode, route: Route) {
-        this.parent = parent;
-        this.child = child;
+    constructor(parent: TreeNode, route: Route, ship: Ship) {
         this.parentCommodity = route.sourceCommodity;
         this.childCommodity = route.destinationCommodity;
+
+        this.parent = parent;
+        this.parent.restoreShip(ship);
+
+        this.trade(ship);
+
+        this.child = new TreeNode(route.destination, ship);
+
+        ship.reset();
     }
 
-    public trade(ship: Ship): void {
+    private trade(ship: Ship): void {
         ship.trade(this.parentCommodity, this.childCommodity);
     }
 
@@ -80,11 +99,14 @@ export class TreeEdge {
         return this.childCommodity.isNothing() && other.parentCommodity.isNothing();
     }
 
-    public mergedWith(other: TreeEdge): TreeEdge {
-        const fakeNode: PortNode = undefined as unknown as PortNode;
-        const tempRoute = new Route(fakeNode, this.parentCommodity, other.childCommodity);
+    public mergedWith(other: TreeEdge, ship: Ship): TreeEdge {
+        if (!this.childCommodity.equals(other.parentCommodity)) {
+            throw new Error('Cannot merge TreeEdges with different commodities');
+        }
 
-        return new TreeEdge(this.parent, other.child, tempRoute);
+        const tempRoute = other.child.newParentRoute(this.parentCommodity, other.childCommodity);
+
+        return new TreeEdge(this.parent, tempRoute, ship);
     }
 
     public generateChildren(ship: Ship): TreeEdge[] {
@@ -105,26 +127,16 @@ export class TradePath {
         this.netProfit = 0;
     }
 
-    public push(edge: TreeEdge): void {
+    public push(edge: TreeEdge, ship: Ship): void {
         const lastEdge = this.edges[-1];
 
         if (lastEdge !== undefined && lastEdge.canMerge(edge)) {
             this.edges.pop();
 
-            edge = lastEdge.mergedWith(edge);
+            edge = lastEdge.mergedWith(edge, ship);
         }
 
         this.edges.push(edge);
-    }
-
-    public traverse(ship: Ship): void {
-        for (const edge of this.edges) {
-            edge.trade(ship);
-        }
-
-        this.netProfit = ship.getProfit();
-
-        ship.reset();
     }
 
     public hasProfit(): boolean {
@@ -155,8 +167,7 @@ export class RouteTree {
         const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
-            const path = leaf.getFullEdgePath();
-            path.traverse(this.ship);
+            const path = leaf.getFullEdgePath(this.ship);
             if (path.hasProfit()) {
                 paths.push(path);
             }
@@ -186,8 +197,7 @@ export class RouteTree {
 
         // Initialize edge queue
         for (const childRoute of origin.getRoutes()) {
-            const childNode = new TreeNode(childRoute.destination, ship);
-            const edge = new TreeEdge(rootNode, childNode, childRoute);
+            const edge = new TreeEdge(rootNode, childRoute, ship);
 
             rootNode.addChild(edge);
 
@@ -195,7 +205,7 @@ export class RouteTree {
                 edgeQueue.push([edge, 1]);
             }
             else {
-                this.addLeaf(childNode);
+                this.addLeaf(edge.child);
             }
         }
 
