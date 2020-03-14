@@ -7,7 +7,8 @@ import { Ship } from "./ship";
 import { Config } from "./configuration";
 
 Config.initialize({
-    maxHops: 1
+    maxHops: 3,
+    maxChildren: 10,
 });
 const ship = new Ship(1000000, 66);
 

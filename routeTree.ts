@@ -69,6 +69,14 @@ export class TreeNode {
     public restoreShip(ship: Ship): void {
         ship.restore(this.shipMomento);
     }
+
+    public getProfitSoFar(ship: Ship): number {
+        this.restoreShip(ship);
+        const profit = ship.getProfit();
+        ship.reset();
+
+        return profit;
+    }
 }
 
 export class TreeEdge {
@@ -109,12 +117,26 @@ export class TreeEdge {
         return new TreeEdge(this.parent, tempRoute, ship);
     }
 
-    public generateChildren(ship: Ship): TreeEdge[] {
-        return this.child.generateChildren(ship);
+    public generateChildren(ship: Ship, limit?: number): TreeEdge[] {
+        const children = this.child.generateChildren(ship);
+
+        if (limit === undefined) {
+            return children;
+        }
+
+        return children.sort((a: TreeEdge, b: TreeEdge) => -1 * a.compareTo(b, ship)).slice(0, limit);
     }
 
     public toString(): string {
         return `Buy ${this.parentCommodity} at '${this.parent.toPortString()}' -> Sell ${this.childCommodity} in '${this.child.toPortString()}'`;
+    }
+
+    public getProfitSoFar(ship: Ship): number {
+        return this.child.getProfitSoFar(ship);
+    }
+
+    public compareTo(other: TreeEdge, ship: Ship): number {
+        return this.child.getProfitSoFar(ship) - other.child.getProfitSoFar(ship);
     }
 }
 
@@ -138,9 +160,7 @@ export class TradePath {
 
         this.edges.push(edge);
 
-        edge.child.restoreShip(ship);
-        this.netProfit = ship.getProfit();
-        ship.reset();
+        this.netProfit = edge.getProfitSoFar(ship);
     }
 
     public hasProfit(): boolean {
@@ -220,7 +240,7 @@ export class RouteTree {
             const childDepth = poppedDepth + 1;
 
             // Generate, handle, and push next generation of children
-            for (const newEdge of poppedEdge.generateChildren(ship)) {
+            for (const newEdge of poppedEdge.generateChildren(ship, Config.getMaxChildren())) {
                 if (childDepth === Config.getMaxHops()) {
                     // If the child is at the max depth, add it to the list of leaves
                     this.addLeaf(newEdge.child);
