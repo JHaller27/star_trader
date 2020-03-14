@@ -137,6 +137,10 @@ export class TradePath {
         }
 
         this.edges.push(edge);
+
+        edge.child.restoreShip(ship);
+        this.netProfit = ship.getProfit();
+        ship.reset();
     }
 
     public hasProfit(): boolean {
@@ -201,7 +205,8 @@ export class RouteTree {
 
             rootNode.addChild(edge);
 
-            if (Config.getMaxHops() > 1) {
+            const maxHops = Config.getMaxHops();
+            if (maxHops > 1) {
                 edgeQueue.push([edge, 1]);
             }
             else {
