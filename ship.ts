@@ -1,8 +1,9 @@
 import { Commodity } from "./commodity";
+import { IMomentable } from "./momento";
 
 const UNITS_PER_SCU = 1000;
 
-export class Ship {
+export class Ship implements IMomentable<ShipMomento> {
     private readonly initialCredits: number ;
     private readonly maxCapacity: number;
 
@@ -15,6 +16,16 @@ export class Ship {
 
         this.credits = this.initialCredits;
         this.curentCargo = undefined;
+    }
+
+    public createSnapshot(): ShipMomento {
+        return {
+            credits: this.credits
+        };
+    }
+
+    public restore(momento: ShipMomento): void {
+        this.credits = momento.credits;
     }
 
     public reset(): void {
@@ -67,4 +78,8 @@ export class Ship {
 
         return cargo;
     }
+}
+
+interface ShipMomento {
+    credits: number;
 }
