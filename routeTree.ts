@@ -164,26 +164,7 @@ export class RouteTree {
         this.leaves.push(leafNode);
     }
 
-    private buildTreeDFS(origin: PortNode, maxDepth: number): TreeNode {
-        let root: TreeNode = new TreeNode(origin);
-
-        if (maxDepth === 0) {
-            this.addLeaf(root);
-
-            return root;
-        }
-
-        for (const route of origin.getRoutes()) {
-            const childTree = this.buildTree(route.destination, maxDepth - 1);
-            const newEdge = new TreeEdge(root, childTree, route);
-
-            root.addChild(newEdge);
-        }
-
-        return root;
-    }
-
-    private buildTreeBFS(origin: PortNode, maxDepth: number): TreeNode {
+    private buildTree(origin: PortNode, maxDepth: number): TreeNode {
         if (maxDepth < 0) {
             throw new Error('Max depth may not be negative');
         }
@@ -232,9 +213,5 @@ export class RouteTree {
         }
 
         return rootNode;
-    }
-
-    private buildTree(origin: PortNode, maxDepth: number): TreeNode {
-        return this.buildTreeBFS(origin, maxDepth);
     }
 }
