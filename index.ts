@@ -5,19 +5,30 @@ import { RouteTree } from "./routeTree";
 import { Port } from "./port";
 import { Ship } from "./ship";
 
+console.log('Reading data...');
 const reader: IReader = new JSONReader('./data/commodities.json');
+console.log('done');
+
 const generator = new RouteMapGenerator(reader);
+
+console.log('Generating route map...');
 const routeMap: RouteMap = generator.getRouteMap();
+console.log('done');
 
-const ship = new Ship(1000000, 66, 5);
-
-console.log(ship.toString());
-console.log();
+const ship = new Ship(1000000, 66, 4);
 
 const origin = new Port(['Stanton', 'Crusader', 'Port Olisar']);
 
+console.log('Generating route tree...');
 const routeTree: RouteTree = routeMap.asRouteTree(origin, ship);
+console.log('done');
+
+console.log('Traversing paths...');
 const paths = routeTree.getPaths();
+console.log('done');
+
+console.log(ship.toString());
+console.log();
 
 for (const path of paths) {
     console.log(path.toString());
