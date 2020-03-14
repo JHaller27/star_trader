@@ -208,17 +208,23 @@ export class RouteTree {
         for (let popped_value = edge_queue.shift(); popped_value !== undefined; popped_value = edge_queue.shift()) {
             const [popped_edge, popped_depth] = popped_value;
 
-            // If the depth of the next set of children exceeds the max depth,
-            //  then no more children will be shallow enough and we should return
-            if (popped_depth + 1 > maxDepth) {
-                return root;
-            }
-
             // Generate, handle, and push next generation of children
             for (const newEdge of popped_edge.generateChildren()) {
-                newEdge.parent.addChild(newEdge);
+                const childDepth = popped_depth + 1;
 
-                edge_queue.push([newEdge, popped_depth + 1]);
+                // Handle new child if its depth is within the maxDepth bounds
+                if (childDepth <= maxDepth) {
+                    newEdge.parent.addChild(newEdge);
+
+                    if (childDepth === maxDepth) {
+                        // If the child is at the max depth, add it to the list of leaves
+                        this.leaves.push(newEdge.child);
+                    }
+                    else {
+                        // Otherwise, queue it to generate more children
+                        edge_queue.push([newEdge, childDepth]);
+                    }
+                }
             }
         }
 
