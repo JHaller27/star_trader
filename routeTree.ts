@@ -1,6 +1,6 @@
 import { PortNode, Route } from './routeMap';
 import { Commodity } from './commodity';
-import { Ship } from './ship';
+import { Ship, ShipMomento } from './ship';
 import { Config } from './configuration';
 
 export class TreeNode {
@@ -8,11 +8,15 @@ export class TreeNode {
     private readonly childEdges: TreeEdge[];
     private parentEdge: TreeEdge | undefined;
 
-    constructor(value: PortNode) {
+    private readonly shipMomento: ShipMomento;
+
+    constructor(value: PortNode, ship: Ship) {
         this.value = value;
 
         this.childEdges = [];
         this.parentEdge = undefined;
+
+        this.shipMomento = ship.createSnapshot();
     }
 
     public addChild(edge: TreeEdge): void {
@@ -47,8 +51,8 @@ export class TreeNode {
         return this.value.equals(other.value);
     }
 
-    public generateChildren(): TreeEdge[] {
-        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, new TreeNode(route.destination), route));
+    public generateChildren(ship: Ship): TreeEdge[] {
+        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, new TreeNode(route.destination, ship), route));
         childEdges.forEach(e => e.parent.addChild(e));
 
         return childEdges;
@@ -83,8 +87,8 @@ export class TreeEdge {
         return new TreeEdge(this.parent, other.child, tempRoute);
     }
 
-    public generateChildren(): TreeEdge[] {
-        return this.child.generateChildren();
+    public generateChildren(ship: Ship): TreeEdge[] {
+        return this.child.generateChildren(ship);
     }
 
     public toString(): string {
@@ -143,7 +147,7 @@ export class RouteTree {
 
     constructor(origin: PortNode, ship: Ship) {
         this.leaves = [];
-        this.root = this.buildTree(origin, Config.getMaxHops());
+        this.root = this.buildTree(origin, ship);
         this.ship = ship;
     }
 
@@ -165,14 +169,14 @@ export class RouteTree {
         this.leaves.push(leafNode);
     }
 
-    private buildTree(origin: PortNode, maxDepth: number): TreeNode {
-        if (maxDepth < 0) {
+    private buildTree(origin: PortNode, ship: Ship): TreeNode {
+        if (Config.getMaxHops() < 0) {
             throw new Error('Max depth may not be negative');
         }
 
-        const rootNode = new TreeNode(origin);
+        const rootNode = new TreeNode(origin, ship);
 
-        if (maxDepth === 0) {
+        if (Config.getMaxHops() === 0) {
             return rootNode;
         }
 
@@ -182,12 +186,12 @@ export class RouteTree {
 
         // Initialize edge queue
         for (const childRoute of origin.getRoutes()) {
-            const childNode = new TreeNode(childRoute.destination);
+            const childNode = new TreeNode(childRoute.destination, ship);
             const edge = new TreeEdge(rootNode, childNode, childRoute);
 
             rootNode.addChild(edge);
 
-            if (maxDepth > 1) {
+            if (Config.getMaxHops() > 1) {
                 edgeQueue.push([edge, 1]);
             }
             else {
@@ -201,8 +205,8 @@ export class RouteTree {
             const childDepth = poppedDepth + 1;
 
             // Generate, handle, and push next generation of children
-            for (const newEdge of poppedEdge.generateChildren()) {
-                if (childDepth === maxDepth) {
+            for (const newEdge of poppedEdge.generateChildren(ship)) {
+                if (childDepth === Config.getMaxHops()) {
                     // If the child is at the max depth, add it to the list of leaves
                     this.addLeaf(newEdge.child);
                 }

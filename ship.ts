@@ -80,6 +80,6 @@ export class Ship implements IMomentable<ShipMomento> {
     }
 }
 
-interface ShipMomento {
+export interface ShipMomento {
     credits: number;
 }
