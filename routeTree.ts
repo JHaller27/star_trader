@@ -45,6 +45,10 @@ export class TreeNode {
     public equals(other: TreeNode): boolean {
         return this.value.equals(other.value);
     }
+
+    public generateChildren(): TreeEdge[] {
+        return this.value.getRoutes().map(route => new TreeEdge(this, new TreeNode(route.destination), route));
+    }
 }
 
 export class TreeEdge {
@@ -73,6 +77,10 @@ export class TreeEdge {
         const tempRoute = new Route(fakeNode, this.parentCommodity, other.childCommodity);
 
         return new TreeEdge(this.parent, other.child, tempRoute);
+    }
+
+    public generateChildren(): TreeEdge[] {
+        return this.child.generateChildren();
     }
 
     public toString(): string {
@@ -154,7 +162,7 @@ export class RouteTree {
         this.leaves.push(leafNode);
     }
 
-    private buildTree(origin: PortNode, maxDepth: number): TreeNode {
+    private buildTreeDFS(origin: PortNode, maxDepth: number): TreeNode {
         let root: TreeNode = new TreeNode(origin);
 
         if (maxDepth === 0) {
@@ -171,5 +179,55 @@ export class RouteTree {
         }
 
         return root;
+    }
+
+    private buildTreeBFS(origin: PortNode, maxDepth: number): TreeNode {
+        if (maxDepth < 0) {
+            throw new Error('Max depth may not be negative');
+        }
+
+        const root = new TreeNode(origin);
+
+        if (maxDepth === 0) {
+            return root;
+        }
+
+        const edge_queue: [TreeEdge, number][] = [];
+
+        // Initialize edge queue
+        for (const childRoute of origin.getRoutes()) {
+            const childNode = new TreeNode(childRoute.destination);
+            const edge = new TreeEdge(root, childNode, childRoute);
+
+            root.addChild(edge);
+
+            edge_queue.push([edge, 1]);
+        }
+
+        // Actual BFS
+        for (let popped_value = edge_queue.shift(); popped_value !== undefined; popped_value = edge_queue.shift()) {
+            const [popped_edge, popped_depth] = popped_value;
+
+            // If the depth of the next set of children exceeds the max depth,
+            //  then no more children will be shallow enough and we should return
+            if (popped_depth + 1 > maxDepth) {
+                return root;
+            }
+
+            // Generate, handle, and push next generation of children
+            for (const newEdge of popped_edge.generateChildren()) {
+                newEdge.parent.addChild(newEdge);
+
+                edge_queue.push([newEdge, popped_depth + 1]);
+            }
+        }
+
+        // If, by some miracle, we've exhausted all nodes in an unchanging, cyclic graph, return
+        //  (also makes TS not complain)
+        return root;
+    }
+
+    private buildTree(origin: PortNode, maxDepth: number): TreeNode {
+        return this.buildTreeBFS(origin, maxDepth);
     }
 }
