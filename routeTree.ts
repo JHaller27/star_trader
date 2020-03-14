@@ -186,31 +186,31 @@ export class RouteTree {
             throw new Error('Max depth may not be negative');
         }
 
-        const root = new TreeNode(origin);
+        const rootNode = new TreeNode(origin);
 
         if (maxDepth === 0) {
-            return root;
+            return rootNode;
         }
 
-        const edge_queue: [TreeEdge, number][] = [];
+        const edgeQueue: [TreeEdge, number][] = [];
 
         // Initialize edge queue
         for (const childRoute of origin.getRoutes()) {
             const childNode = new TreeNode(childRoute.destination);
-            const edge = new TreeEdge(root, childNode, childRoute);
+            const edge = new TreeEdge(rootNode, childNode, childRoute);
 
-            root.addChild(edge);
+            rootNode.addChild(edge);
 
-            edge_queue.push([edge, 1]);
+            edgeQueue.push([edge, 1]);
         }
 
         // Actual BFS
-        for (let popped_value = edge_queue.shift(); popped_value !== undefined; popped_value = edge_queue.shift()) {
-            const [popped_edge, popped_depth] = popped_value;
+        for (let poppedValue = edgeQueue.shift(); poppedValue !== undefined; poppedValue = edgeQueue.shift()) {
+            const [poppedEdge, poppedDepth] = poppedValue;
 
             // Generate, handle, and push next generation of children
-            for (const newEdge of popped_edge.generateChildren()) {
-                const childDepth = popped_depth + 1;
+            for (const newEdge of poppedEdge.generateChildren()) {
+                const childDepth = poppedDepth + 1;
 
                 // Handle new child if its depth is within the maxDepth bounds
                 if (childDepth <= maxDepth) {
@@ -222,7 +222,7 @@ export class RouteTree {
                     }
                     else {
                         // Otherwise, queue it to generate more children
-                        edge_queue.push([newEdge, childDepth]);
+                        edgeQueue.push([newEdge, childDepth]);
                     }
                 }
             }
@@ -230,7 +230,7 @@ export class RouteTree {
 
         // If, by some miracle, we've exhausted all nodes in an unchanging, cyclic graph, return
         //  (also makes TS not complain)
-        return root;
+        return rootNode;
     }
 
     private buildTree(origin: PortNode, maxDepth: number): TreeNode {
