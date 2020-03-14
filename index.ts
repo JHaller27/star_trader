@@ -4,6 +4,12 @@ import { RouteMap } from "./routeMap";
 import { RouteTree, TradePath } from "./routeTree";
 import { Port } from "./port";
 import { Ship } from "./ship";
+import { Config } from "./configuration";
+
+Config.initialize({
+    maxHops: 1
+});
+const ship = new Ship(1000000, 66);
 
 console.log('Reading data...');
 const reader: IReader = new JSONReader('./data/commodities.json');
@@ -14,8 +20,6 @@ const generator = new RouteMapGenerator(reader);
 console.log('Generating route map...');
 const routeMap: RouteMap = generator.getRouteMap();
 console.log('done');
-
-const ship = new Ship(1000000, 66, 1);
 
 const origin = new Port(['Stanton', 'Crusader', 'Port Olisar']);
 

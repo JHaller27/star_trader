@@ -1,6 +1,7 @@
 import { PortNode, Route } from './routeMap';
 import { Commodity } from './commodity';
 import { Ship } from './ship';
+import { Config } from './configuration';
 
 export class TreeNode {
     private readonly value: PortNode;
@@ -142,7 +143,7 @@ export class RouteTree {
 
     constructor(origin: PortNode, ship: Ship) {
         this.leaves = [];
-        this.root = this.buildTree(origin, ship.getMaxHops());
+        this.root = this.buildTree(origin, Config.getMaxHops());
         this.ship = ship;
     }
 

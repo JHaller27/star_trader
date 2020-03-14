@@ -2,21 +2,16 @@ import { Commodity } from "./commodity";
 
 const UNITS_PER_SCU = 1000;
 
-/**
- * Ship constraints - max investment, max cargo capacity, etc.
- */
 export class Ship {
     private readonly initialCredits: number ;
     private readonly maxCapacity: number;
-    private readonly maxHops: number;
 
     private credits: number;
     private curentCargo: Commodity | undefined;
 
-    constructor(initCredits: number, maxSCU: number, maxHops: number) {
+    constructor(initCredits: number, maxSCU: number) {
         this.initialCredits = initCredits;
         this.maxCapacity = maxSCU * UNITS_PER_SCU;
-        this.maxHops = maxHops;
 
         this.credits = this.initialCredits;
         this.curentCargo = undefined;
@@ -25,10 +20,6 @@ export class Ship {
     public reset(): void {
         this.credits = this.initialCredits;
         this.emptyCargo();
-    }
-
-    public getMaxHops(): number {
-        return this.maxHops;
     }
 
     public getProfit(): number {
