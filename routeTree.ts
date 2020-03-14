@@ -47,7 +47,10 @@ export class TreeNode {
     }
 
     public generateChildren(): TreeEdge[] {
-        return this.value.getRoutes().map(route => new TreeEdge(this, new TreeNode(route.destination), route));
+        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, new TreeNode(route.destination), route));
+        childEdges.forEach(e => e.parent.addChild(e));
+
+        return childEdges;
     }
 }
 
@@ -192,6 +195,8 @@ export class RouteTree {
             return rootNode;
         }
 
+        // Only edges which are already attached to the root (at some depth) and whose
+        //  children's depth will not exceed the max depth are allowed in the queue
         const edgeQueue: [TreeEdge, number][] = [];
 
         // Initialize edge queue
@@ -201,35 +206,32 @@ export class RouteTree {
 
             rootNode.addChild(edge);
 
-            edgeQueue.push([edge, 1]);
+            if (maxDepth > 1) {
+                edgeQueue.push([edge, 1]);
+            }
+            else {
+                this.addLeaf(childNode);
+            }
         }
 
         // Actual BFS
         for (let poppedValue = edgeQueue.shift(); poppedValue !== undefined; poppedValue = edgeQueue.shift()) {
             const [poppedEdge, poppedDepth] = poppedValue;
+            const childDepth = poppedDepth + 1;
 
             // Generate, handle, and push next generation of children
             for (const newEdge of poppedEdge.generateChildren()) {
-                const childDepth = poppedDepth + 1;
-
-                // Handle new child if its depth is within the maxDepth bounds
-                if (childDepth <= maxDepth) {
-                    newEdge.parent.addChild(newEdge);
-
-                    if (childDepth === maxDepth) {
-                        // If the child is at the max depth, add it to the list of leaves
-                        this.leaves.push(newEdge.child);
-                    }
-                    else {
-                        // Otherwise, queue it to generate more children
-                        edgeQueue.push([newEdge, childDepth]);
-                    }
+                if (childDepth === maxDepth) {
+                    // If the child is at the max depth, add it to the list of leaves
+                    this.addLeaf(newEdge.child);
+                }
+                else {
+                    // Otherwise, queue it to generate more children
+                    edgeQueue.push([newEdge, childDepth]);
                 }
             }
         }
 
-        // If, by some miracle, we've exhausted all nodes in an unchanging, cyclic graph, return
-        //  (also makes TS not complain)
         return rootNode;
     }
 
