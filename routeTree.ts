@@ -157,8 +157,7 @@ export class RouteTree {
             }
         }
 
-        // Invert compareTo to sort descending instead of default ascending
-        return paths.sort((p1: TradePath, p2: TradePath) => -1 * p1.compareTo(p2));
+        return paths;
     }
 
     private addLeaf(leafNode: TreeNode): void {

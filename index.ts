@@ -1,7 +1,7 @@
 import { IReader, JSONReader } from "./reader";
 import { RouteMapGenerator } from "./generator";
 import { RouteMap } from "./routeMap";
-import { RouteTree } from "./routeTree";
+import { RouteTree, TradePath } from "./routeTree";
 import { Port } from "./port";
 import { Ship } from "./ship";
 
@@ -15,7 +15,7 @@ console.log('Generating route map...');
 const routeMap: RouteMap = generator.getRouteMap();
 console.log('done');
 
-const ship = new Ship(1000000, 66, 4);
+const ship = new Ship(1000000, 66, 1);
 
 const origin = new Port(['Stanton', 'Crusader', 'Port Olisar']);
 
@@ -25,6 +25,8 @@ console.log('done');
 
 console.log('Traversing paths...');
 const paths = routeTree.getPaths();
+// Invert compareTo to sort descending instead of default ascending
+paths.sort((p1: TradePath, p2: TradePath) => 1 * p1.compareTo(p2));
 console.log('done');
 
 console.log(ship.toString());
