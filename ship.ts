@@ -1,7 +1,7 @@
 import { Commodity } from "./commodity";
 import { IMomentable } from "./momento";
 
-const UNITS_PER_SCU = 1000;
+const UNITS_PER_SCU = 100;
 
 export class Ship implements IMomentable<ShipMomento> {
     private static instance: Ship | undefined;
@@ -39,9 +39,14 @@ export class Ship implements IMomentable<ShipMomento> {
         return this.credits - this.initialCredits;
     }
 
-    public trade(buy: Commodity, sell: Commodity): void {
+    public trade(buy: Commodity, sell: Commodity): number {
         this.purchaseMaxUnitsOf(buy);
+
+        const units = this.curentCargo === undefined ? 0 : this.curentCargo.getUnits();
+
         this.sellAllUnitsAt(sell);
+
+        return units;
     }
 
     public toString(): string {

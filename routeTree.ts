@@ -103,6 +103,7 @@ export class TreeEdge {
     public readonly child: TreeNode;
     private readonly parentCommodity: Commodity;
     private readonly childCommodity: Commodity;
+    private readonly units: number;
 
     constructor(parent: TreeNode, route: Route) {
         this.parentCommodity = route.sourceCommodity;
@@ -111,15 +112,15 @@ export class TreeEdge {
         this.parent = parent;
         this.parent.restoreShip();
 
-        this.trade();
+        this.units = this.trade();
 
         this.child = new TreeNode(route.destination);
 
         Ship.getInstance().reset();
     }
 
-    private trade(): void {
-        Ship.getInstance().trade(this.parentCommodity, this.childCommodity);
+    private trade(): number {
+        return Ship.getInstance().trade(this.parentCommodity, this.childCommodity);
     }
 
     public canMerge(other: TreeEdge): boolean {
@@ -147,7 +148,8 @@ export class TreeEdge {
     }
 
     public toString(): string {
-        return `Buy ${this.parentCommodity} at '${this.parent.toPortString()}' -> Sell ${this.childCommodity} in '${this.child.toPortString()}'`;
+        const unitString: string = this.parentCommodity.isNothing() ? '' : `${this.units} units of `;
+        return `Buy ${unitString}${this.parentCommodity} at '${this.parent.toPortString()}' -> Sell ${this.childCommodity} in '${this.child.toPortString()}'`;
     }
 
     public getProfitSoFar(): number {
@@ -196,6 +198,13 @@ export class TradePath {
 
     public toString(): string {
         return this.edges.map(e => e.toString()).join('\n') + `\nNet profit: ${Math.floor(this.netProfit)} UEC`;
+    }
+
+    public toAbsolute(): void {
+        Ship.getInstance().reset();
+
+        for (const edge of this.edges) {
+        }
     }
 }
 
