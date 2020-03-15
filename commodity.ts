@@ -131,7 +131,7 @@ export class Commodity implements IComparable {
     }
 
     public isNothing(): boolean {
-        return name === Commodity.NOTHING;
+        return this.name === Commodity.NOTHING;
     }
 
     private ppu2Absolute(units: number): void {
