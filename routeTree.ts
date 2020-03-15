@@ -5,7 +5,8 @@ import { Config } from './configuration';
 
 export class TreeNode {
     private readonly value: PortNode;
-    private readonly childEdges: TreeEdge[];
+    private readonly edgeMap: { [k: string]: TreeEdge};
+
     private parentEdge: TreeEdge | undefined;
 
     private readonly shipMomento: ShipMomento;
@@ -17,15 +18,25 @@ export class TreeNode {
 
         this.value = value;
 
-        this.childEdges = [];
+        this.edgeMap = {};
         this.parentEdge = undefined;
 
         this.shipMomento = ship.createSnapshot();
     }
 
     public addChild(edge: TreeEdge): void {
-        this.childEdges.push(edge);
         edge.child.setParentEdge(edge);
+
+        const hash = edge.hash();
+        if (hash in this.edgeMap) {
+            const existingEdge = this.edgeMap[hash];
+            if (edge.profit(ship) > existingEdge.profit(ship)) {
+                this.edgeMap[hash] = edge;
+            }
+        }
+        else {
+            this.edgeMap[hash] = edge;
+        }
     }
 
     public getFullEdgePath(ship: Ship): TradePath {
@@ -76,6 +87,14 @@ export class TreeNode {
         ship.reset();
 
         return profit;
+    }
+
+    public compareTo(other: TreeNode, ship: Ship): number {
+        return this.getProfitSoFar(ship) - other.getProfitSoFar(ship);
+    }
+
+    public hash(): string {
+        return this.value.hash();
     }
 }
 
@@ -137,6 +156,10 @@ export class TreeEdge {
 
     public compareTo(other: TreeEdge, ship: Ship): number {
         return this.child.getProfitSoFar(ship) - other.child.getProfitSoFar(ship);
+    }
+
+    public hash(): string {
+        return `${this.parent.hash()} -> ${this.child.hash()}`;
     }
 }
 

@@ -22,4 +22,8 @@ export class Port {
 
         return true;
     }
+
+    public hash(): string {
+        return this.toString();
+    }
 }

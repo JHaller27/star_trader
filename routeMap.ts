@@ -126,6 +126,10 @@ export class PortNode {
     public getRoutes(): Route[] {
         return this.routes;
     }
+
+    public hash(): string {
+        return this.port.hash();
+    }
 }
 
 export class Route {
