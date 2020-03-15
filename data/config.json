@@ -1,0 +1,9 @@
+{
+    "maxHops": 3,
+    "maxChildren": 10,
+    "allowHidden": false,
+    "excludeCommodities": [],
+
+    "credits": 50000,
+    "maxCargoSCU": 66
+}

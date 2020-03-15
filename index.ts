@@ -6,12 +6,10 @@ import { Port } from "./port";
 import { Ship } from "./ship";
 import { Config } from "./configuration";
 
-Config.initialize({
-    maxHops: 4,
-    maxChildren: 10,
-    allowHidden: false,
-});
-Ship.initialize(1000000, 66);
+import settings from "./data/config.json";
+
+Config.initialize(settings);
+Ship.initialize(settings.credits, settings.maxCargoSCU);
 
 console.log('Reading data...');
 const reader: IReader = new JSONReader('./data/commodities.json');
