@@ -274,10 +274,30 @@ export class RouteTree {
             }
         }
 
+        let lastSplitDepth = 0;
+
         // Actual BFS
         for (let poppedValue = edgeQueue.shift(); poppedValue !== undefined; poppedValue = edgeQueue.shift()) {
             const [poppedEdge, poppedDepth] = poppedValue;
             const childDepth = poppedDepth + 1;
+
+            // If this depth/generation is the split, only keep best nodes
+            if (poppedDepth !== lastSplitDepth && Config.shouldSplit(poppedDepth)) {
+                lastSplitDepth = poppedDepth;
+
+                const currentGeneration: TreeEdge[] = [poppedEdge];
+
+                for (let nextValue = edgeQueue.shift(); nextValue !== undefined && nextValue[1] === poppedDepth; nextValue = edgeQueue.shift()) {
+                    const [nextEdge,] = nextValue;
+                    currentGeneration.push(nextEdge);
+                }
+
+                currentGeneration.sort((a: TreeEdge, b: TreeEdge) => -1 * a.compareTo(b));
+                const best = currentGeneration[0];
+                const bestOfCurrentGeneration = currentGeneration.filter(e => best.compareTo(e) === 0);
+
+                bestOfCurrentGeneration.forEach(e => edgeQueue.push([e, poppedDepth]));
+            }
 
             // Generate, handle, and push next generation of children
             for (const newEdge of poppedEdge.generateChildren(Config.getMaxChildren())) {

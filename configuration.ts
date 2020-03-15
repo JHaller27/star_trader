@@ -48,7 +48,7 @@ export class Config {
     public static shouldSplit(depth: number): boolean {
         const splitDepth = this.getInstance().splitDepth;
 
-        return splitDepth !== undefined && splitDepth === depth;
+        return splitDepth !== undefined && depth % splitDepth === 0;
     }
 
     public static allowHidden(): boolean {
