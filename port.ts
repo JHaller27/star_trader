@@ -1,8 +1,14 @@
 export class Port {
     private readonly locationPath: string[];
+    private readonly hidden: boolean;
 
     constructor(locationPath: string[]) {
         this.locationPath = locationPath;
+        this.hidden = locationPath.findIndex(s => s.includes('Hidden')) !== -1;
+    }
+
+    public isHidden(): boolean {
+        return this.hidden;
     }
 
     public toString(): string {

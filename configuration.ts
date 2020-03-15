@@ -1,6 +1,7 @@
 export interface ConfigSettings {
     maxHops: number,
     maxChildren?: number,
+    allowHidden?: boolean,
 }
 
 export class Config {
@@ -8,10 +9,12 @@ export class Config {
 
     private readonly maxHops: number;
     private readonly maxChildren: number | undefined;
+    private readonly allowHidden: boolean;
 
     private constructor(settings: ConfigSettings) {
         this.maxHops = settings.maxHops;
         this.maxChildren = settings.maxChildren;
+        this.allowHidden = settings.allowHidden !== undefined && settings.allowHidden;
     }
 
     private static getInstance(): Config {
@@ -32,5 +35,9 @@ export class Config {
 
     public static getMaxChildren(): number | undefined {
         return this.getInstance().maxChildren;
+    }
+
+    public static allowHidden(): boolean {
+        return this.getInstance().allowHidden;
     }
 }

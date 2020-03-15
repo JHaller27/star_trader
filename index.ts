@@ -9,6 +9,7 @@ import { Config } from "./configuration";
 Config.initialize({
     maxHops: 4,
     maxChildren: 10,
+    allowHidden: false,
 });
 Ship.initialize(1000000, 66);
 

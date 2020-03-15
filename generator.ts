@@ -3,6 +3,7 @@ import { RouteMap } from "./routeMap";
 import { PortMap } from "./portMap";
 import { Port } from "./port";
 import { Commodity } from "./commodity";
+import { Config } from "./configuration";
 
 export class RouteMapGenerator {
     private readonly reader: IReader;
@@ -33,6 +34,11 @@ export class RouteMapGenerator {
 
         for (const rawPort of this.data) {
             const port: Port = new Port(rawPort.location);
+
+            // If port is hidden and config doesn't allow hidden, skip this iteration
+            if (port.isHidden() && !Config.allowHidden()) {
+                continue;
+            }
 
             for (const rawCommodity of rawPort.commodities) {
                 if (rawCommodity.buying !== null) {
