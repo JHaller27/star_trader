@@ -1,10 +1,15 @@
 {
-    "maxHops": 10,
-    "maxChildren": 10,
+    "origin": [
+        "Stanton",
+        "ArcCorp",
+        "AREA 18 - Trade Development Division (TDD)"
+    ],
+    "maxHops": 4,
+    "maxChildren": 20,
     "splitDepth": 3,
     "allowHidden": false,
-    "excludeCommodities": [],
+    "excludeCommodities": ["Medical Supplies"],
 
-    "credits": 50000,
+    "credits": 40000,
     "maxCargoSCU": 66
 }

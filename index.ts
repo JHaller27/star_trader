@@ -21,10 +21,9 @@ console.log('Generating route map...');
 const routeMap: RouteMap = generator.getRouteMap();
 console.log('done');
 
-const origin = new Port(['Stanton', 'Crusader', 'Port Olisar']);
 
 console.log('Generating route tree...');
-const routeTree: RouteTree = routeMap.asRouteTree(origin);
+const routeTree: RouteTree = routeMap.asRouteTree(Config.getOrigin());
 console.log('done');
 
 console.log('Traversing paths...');
