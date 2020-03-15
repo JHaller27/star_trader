@@ -38,14 +38,14 @@ export class RouteMap {
         originNode.addRoute(route);
     }
 
-    public asRouteTree(originPort: Port, ship: Ship): RouteTree {
+    public asRouteTree(originPort: Port): RouteTree {
         const originNode = this.findPortNode(originPort);
 
         if (originNode === undefined) {
             throw new Error(`Origin '${originPort.toString()}' not found`);
         }
 
-        return new RouteTree(originNode, ship);
+        return new RouteTree(originNode);
     }
 
     public toString(): string {

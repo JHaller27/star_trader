@@ -7,10 +7,10 @@ import { Ship } from "./ship";
 import { Config } from "./configuration";
 
 Config.initialize({
-    maxHops: 3,
+    maxHops: 4,
     maxChildren: 10,
 });
-const ship = new Ship(1000000, 66);
+Ship.initialize(1000000, 66);
 
 console.log('Reading data...');
 const reader: IReader = new JSONReader('./data/commodities.json');
@@ -25,19 +25,20 @@ console.log('done');
 const origin = new Port(['Stanton', 'Crusader', 'Port Olisar']);
 
 console.log('Generating route tree...');
-const routeTree: RouteTree = routeMap.asRouteTree(origin, ship);
+const routeTree: RouteTree = routeMap.asRouteTree(origin);
 console.log('done');
 
 console.log('Traversing paths...');
 const paths = routeTree.getPaths();
+
 // Invert compareTo to sort descending instead of default ascending
-paths.sort((p1: TradePath, p2: TradePath) => 1 * p1.compareTo(p2));
+paths.sort((p1: TradePath, p2: TradePath) => -1 * p1.compareTo(p2));
 console.log('done');
 
-console.log(ship.toString());
+console.log(Ship.getInstance().toString());
 console.log();
 
-for (const path of paths) {
+for (const path of paths.slice(0, 5)) {
     console.log(path.toString());
     console.log();
 }

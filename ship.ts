@@ -4,13 +4,15 @@ import { IMomentable } from "./momento";
 const UNITS_PER_SCU = 1000;
 
 export class Ship implements IMomentable<ShipMomento> {
+    private static instance: Ship | undefined;
+
     private readonly initialCredits: number ;
     private readonly maxCapacity: number;
 
     private credits: number;
     private curentCargo: Commodity | undefined;
 
-    constructor(initCredits: number, maxSCU: number) {
+    private constructor(initCredits: number, maxSCU: number) {
         this.initialCredits = initCredits;
         this.maxCapacity = maxSCU * UNITS_PER_SCU;
 
@@ -44,6 +46,18 @@ export class Ship implements IMomentable<ShipMomento> {
 
     public toString(): string {
         return `Wallet: ${this.credits} UEC | Max Cargo: ${this.maxCapacity}`;
+    }
+
+    public static initialize(initCredits: number, maxCapacity: number) {
+        Ship.instance = new Ship(initCredits, maxCapacity);
+    }
+
+    public static getInstance(): Ship {
+        if (Ship.instance === undefined) {
+            throw new Error('Ship instance has not yet been initialized');
+        }
+
+        return Ship.instance;
     }
 
     private purchaseMaxUnitsOf(commodity: Commodity): void {

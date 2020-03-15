@@ -11,7 +11,7 @@ export class TreeNode {
 
     private readonly shipMomento: ShipMomento;
 
-    constructor(value: PortNode | Route, ship: Ship) {
+    constructor(value: PortNode | Route) {
         if (value instanceof Route) {
             value = value.destination;
         }
@@ -21,7 +21,7 @@ export class TreeNode {
         this.edgeMap = {};
         this.parentEdge = undefined;
 
-        this.shipMomento = ship.createSnapshot();
+        this.shipMomento = Ship.getInstance().createSnapshot();
     }
 
     public addChild(edge: TreeEdge): void {
@@ -30,7 +30,7 @@ export class TreeNode {
         const hash = edge.hash();
         if (hash in this.edgeMap) {
             const existingEdge = this.edgeMap[hash];
-            if (edge.profit(ship) > existingEdge.profit(ship)) {
+            if (edge.getProfitSoFar() > existingEdge.getProfitSoFar()) {
                 this.edgeMap[hash] = edge;
             }
         }
@@ -39,13 +39,13 @@ export class TreeNode {
         }
     }
 
-    public getFullEdgePath(ship: Ship): TradePath {
+    public getFullEdgePath(): TradePath {
         if (this.parentEdge === undefined) {
             return new TradePath();
         }
 
-        const path: TradePath = this.parentEdge.parent.getFullEdgePath(ship);
-        path.push(this.parentEdge, ship);
+        const path: TradePath = this.parentEdge.parent.getFullEdgePath();
+        path.push(this.parentEdge);
 
         return path;
     }
@@ -66,8 +66,8 @@ export class TreeNode {
         return this.value.equals(other.value);
     }
 
-    public generateChildren(ship: Ship): TreeEdge[] {
-        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, route, ship));
+    public generateChildren(): TreeEdge[] {
+        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, route));
         childEdges.forEach(e => e.parent.addChild(e));
 
         return childEdges;
@@ -77,20 +77,20 @@ export class TreeNode {
         return new Route(this.value, parentCommodity, endCommodity);
     }
 
-    public restoreShip(ship: Ship): void {
-        ship.restore(this.shipMomento);
+    public restoreShip(): void {
+        Ship.getInstance().restore(this.shipMomento);
     }
 
-    public getProfitSoFar(ship: Ship): number {
-        this.restoreShip(ship);
-        const profit = ship.getProfit();
-        ship.reset();
+    public getProfitSoFar(): number {
+        this.restoreShip();
+        const profit = Ship.getInstance().getProfit();
+        Ship.getInstance().reset();
 
         return profit;
     }
 
-    public compareTo(other: TreeNode, ship: Ship): number {
-        return this.getProfitSoFar(ship) - other.getProfitSoFar(ship);
+    public compareTo(other: TreeNode): number {
+        return this.getProfitSoFar() - other.getProfitSoFar();
     }
 
     public hash(): string {
@@ -104,58 +104,58 @@ export class TreeEdge {
     private readonly parentCommodity: Commodity;
     private readonly childCommodity: Commodity;
 
-    constructor(parent: TreeNode, route: Route, ship: Ship) {
+    constructor(parent: TreeNode, route: Route) {
         this.parentCommodity = route.sourceCommodity;
         this.childCommodity = route.destinationCommodity;
 
         this.parent = parent;
-        this.parent.restoreShip(ship);
+        this.parent.restoreShip();
 
-        this.trade(ship);
+        this.trade();
 
-        this.child = new TreeNode(route.destination, ship);
+        this.child = new TreeNode(route.destination);
 
-        ship.reset();
+        Ship.getInstance().reset();
     }
 
-    private trade(ship: Ship): void {
-        ship.trade(this.parentCommodity, this.childCommodity);
+    private trade(): void {
+        Ship.getInstance().trade(this.parentCommodity, this.childCommodity);
     }
 
     public canMerge(other: TreeEdge): boolean {
         return this.childCommodity.isNothing() && other.parentCommodity.isNothing();
     }
 
-    public mergedWith(other: TreeEdge, ship: Ship): TreeEdge {
+    public mergedWith(other: TreeEdge): TreeEdge {
         if (!this.childCommodity.equals(other.parentCommodity)) {
             throw new Error('Cannot merge TreeEdges with different commodities');
         }
 
         const tempRoute = other.child.newParentRoute(this.parentCommodity, other.childCommodity);
 
-        return new TreeEdge(this.parent, tempRoute, ship);
+        return new TreeEdge(this.parent, tempRoute);
     }
 
-    public generateChildren(ship: Ship, limit?: number): TreeEdge[] {
-        const children = this.child.generateChildren(ship);
+    public generateChildren(limit?: number): TreeEdge[] {
+        const children = this.child.generateChildren();
 
         if (limit === undefined) {
             return children;
         }
 
-        return children.sort((a: TreeEdge, b: TreeEdge) => -1 * a.compareTo(b, ship)).slice(0, limit);
+        return children.sort((a: TreeEdge, b: TreeEdge) => -1 * a.compareTo(b)).slice(0, limit);
     }
 
     public toString(): string {
         return `Buy ${this.parentCommodity} at '${this.parent.toPortString()}' -> Sell ${this.childCommodity} in '${this.child.toPortString()}'`;
     }
 
-    public getProfitSoFar(ship: Ship): number {
-        return this.child.getProfitSoFar(ship);
+    public getProfitSoFar(): number {
+        return this.child.getProfitSoFar();
     }
 
-    public compareTo(other: TreeEdge, ship: Ship): number {
-        return this.child.getProfitSoFar(ship) - other.child.getProfitSoFar(ship);
+    public compareTo(other: TreeEdge): number {
+        return this.child.getProfitSoFar() - other.child.getProfitSoFar();
     }
 
     public hash(): string {
@@ -172,18 +172,18 @@ export class TradePath {
         this.netProfit = 0;
     }
 
-    public push(edge: TreeEdge, ship: Ship): void {
+    public push(edge: TreeEdge): void {
         const lastEdge = this.edges[-1];
 
         if (lastEdge !== undefined && lastEdge.canMerge(edge)) {
             this.edges.pop();
 
-            edge = lastEdge.mergedWith(edge, ship);
+            edge = lastEdge.mergedWith(edge);
         }
 
         this.edges.push(edge);
 
-        this.netProfit = edge.getProfitSoFar(ship);
+        this.netProfit = edge.getProfitSoFar();
     }
 
     public hasProfit(): boolean {
@@ -202,19 +202,18 @@ export class TradePath {
 export class RouteTree {
     private readonly root: TreeNode;
     private readonly leaves: TreeNode[];
-    private readonly ship: Ship;
 
-    constructor(origin: PortNode, ship: Ship) {
+    constructor(origin: PortNode) {
         this.leaves = [];
-        this.root = this.buildTree(origin, ship);
-        this.ship = ship;
+
+        this.root = this.buildTree(origin);
     }
 
     public getPaths(): TradePath[] {
         const paths: TradePath[] = [];
 
         for (const leaf of this.leaves) {
-            const path = leaf.getFullEdgePath(this.ship);
+            const path = leaf.getFullEdgePath();
             if (path.hasProfit()) {
                 paths.push(path);
             }
@@ -227,12 +226,12 @@ export class RouteTree {
         this.leaves.push(leafNode);
     }
 
-    private buildTree(origin: PortNode, ship: Ship): TreeNode {
+    private buildTree(origin: PortNode): TreeNode {
         if (Config.getMaxHops() < 0) {
             throw new Error('Max depth may not be negative');
         }
 
-        const rootNode = new TreeNode(origin, ship);
+        const rootNode = new TreeNode(origin);
 
         if (Config.getMaxHops() === 0) {
             return rootNode;
@@ -244,7 +243,7 @@ export class RouteTree {
 
         // Initialize edge queue
         for (const childRoute of origin.getRoutes()) {
-            const edge = new TreeEdge(rootNode, childRoute, ship);
+            const edge = new TreeEdge(rootNode, childRoute);
 
             rootNode.addChild(edge);
 
@@ -263,7 +262,7 @@ export class RouteTree {
             const childDepth = poppedDepth + 1;
 
             // Generate, handle, and push next generation of children
-            for (const newEdge of poppedEdge.generateChildren(ship, Config.getMaxChildren())) {
+            for (const newEdge of poppedEdge.generateChildren(Config.getMaxChildren())) {
                 if (childDepth === Config.getMaxHops()) {
                     // If the child is at the max depth, add it to the list of leaves
                     this.addLeaf(newEdge.child);
