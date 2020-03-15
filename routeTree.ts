@@ -67,7 +67,9 @@ export class TreeNode {
     }
 
     public generateChildren(): TreeEdge[] {
-        const childEdges = this.value.getRoutes().map(route => new TreeEdge(this, route));
+        const childEdges = this.value.getRoutes()
+            .map(route => new TreeEdge(this, route))
+            .filter(e => e.isIncluded());
         childEdges.forEach(e => e.parent.addChild(e));
 
         return childEdges;
@@ -163,6 +165,10 @@ export class TreeEdge {
     public hash(): string {
         return `${this.parent.hash()} -> ${this.child.hash()}`;
     }
+
+    public isIncluded(): boolean {
+        return this.parentCommodity.isIncluded();
+    }
 }
 
 export class TradePath {
@@ -253,6 +259,9 @@ export class RouteTree {
         // Initialize edge queue
         for (const childRoute of origin.getRoutes()) {
             const edge = new TreeEdge(rootNode, childRoute);
+            if (!edge.isIncluded()) {
+                continue;
+            }
 
             rootNode.addChild(edge);
 

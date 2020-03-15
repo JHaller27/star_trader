@@ -2,7 +2,6 @@ import { Port } from "./port";
 import { TradeInfo, Commodity } from "./commodity";
 import { CompareResult } from "./sorting";
 import { RouteTree } from "./routeTree";
-import { Ship } from "./ship";
 
 export class RouteMap {
     private readonly portMap: Map<Port, PortNode>;

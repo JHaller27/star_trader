@@ -1,4 +1,5 @@
 import { IComparable, CompareResult } from './sorting';
+import { Config } from './configuration';
 
 export class TradeInfo {
     private readonly buying: Map<string, Commodity>;
@@ -132,6 +133,10 @@ export class Commodity implements IComparable {
 
     public isNothing(): boolean {
         return this.name === Commodity.NOTHING;
+    }
+
+    public isIncluded(): boolean {
+        return !Config.getExcludedCommodities().includes(this.name);
     }
 
     private ppu2Absolute(units: number): void {

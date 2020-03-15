@@ -1,7 +1,10 @@
+import { Commodity } from "./commodity";
+
 export interface ConfigSettings {
     maxHops: number,
     maxChildren?: number,
     allowHidden?: boolean,
+    excludeCommodities?: string[],
 }
 
 export class Config {
@@ -10,11 +13,13 @@ export class Config {
     private readonly maxHops: number;
     private readonly maxChildren: number | undefined;
     private readonly allowHidden: boolean;
+    private readonly excludeCommodities: string[];
 
     private constructor(settings: ConfigSettings) {
         this.maxHops = settings.maxHops;
         this.maxChildren = settings.maxChildren;
         this.allowHidden = settings.allowHidden !== undefined && settings.allowHidden;
+        this.excludeCommodities = settings.excludeCommodities === undefined ? [] : settings.excludeCommodities;
     }
 
     private static getInstance(): Config {
@@ -39,5 +44,9 @@ export class Config {
 
     public static allowHidden(): boolean {
         return this.getInstance().allowHidden;
+    }
+
+    public static getExcludedCommodities(): string[] {
+        return this.getInstance().excludeCommodities;
     }
 }
