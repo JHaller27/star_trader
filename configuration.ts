@@ -3,6 +3,7 @@ import { Commodity } from "./commodity";
 export interface ConfigSettings {
     maxHops: number,
     maxChildren?: number,
+    splitDepth?: number,
     allowHidden?: boolean,
     excludeCommodities?: string[],
 }
@@ -12,12 +13,14 @@ export class Config {
 
     private readonly maxHops: number;
     private readonly maxChildren: number | undefined;
+    private readonly splitDepth: number | undefined;
     private readonly allowHidden: boolean;
     private readonly excludeCommodities: string[];
 
     private constructor(settings: ConfigSettings) {
         this.maxHops = settings.maxHops;
         this.maxChildren = settings.maxChildren;
+        this.splitDepth = settings.splitDepth;
         this.allowHidden = settings.allowHidden !== undefined && settings.allowHidden;
         this.excludeCommodities = settings.excludeCommodities === undefined ? [] : settings.excludeCommodities;
     }
@@ -40,6 +43,12 @@ export class Config {
 
     public static getMaxChildren(): number | undefined {
         return this.getInstance().maxChildren;
+    }
+
+    public static shouldSplit(depth: number): boolean {
+        const splitDepth = this.getInstance().splitDepth;
+
+        return splitDepth !== undefined && splitDepth === depth;
     }
 
     public static allowHidden(): boolean {
