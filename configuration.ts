@@ -1,7 +1,5 @@
-import { Commodity } from "./commodity";
-
 export interface ConfigSettings {
-    origin: string[],
+    origin: string,
     maxHops: number,
     maxChildren?: number,
     splitDepth?: number,
@@ -13,7 +11,7 @@ export interface ConfigSettings {
 export class Config {
     private static instance: Config | undefined;
 
-    private readonly origin: string[];
+    private readonly origin: string;
     private readonly maxHops: number;
     private readonly maxChildren: number | undefined;
     private readonly splitDepth: number | undefined;
@@ -41,7 +39,7 @@ export class Config {
         this.instance = new Config(settings);
     }
 
-    public static getOrigin(): string[] {
+    public static getOrigin(): string {
         return this.getInstance().origin;
     }
 

@@ -32,4 +32,16 @@ export class Port {
     public hash(): string {
         return this.toString();
     }
+
+    public matchesName(term: string): boolean {
+        const thisPortName = Port.toSearchableName(this.locationPath[this.locationPath.length - 1]);
+        const searchTerms = term.split(',').map(t => Port.toSearchableName(t));
+        const searchRegex = new RegExp(searchTerms.join('.*'));
+
+        return searchRegex.test(thisPortName);
+    }
+
+    private static toSearchableName(name: string): string {
+        return name.toLowerCase().replace(/\s+/, '');
+    }
 }

@@ -1,9 +1,5 @@
 {
-    "origin": [
-        "Stanton",
-        "ArcCorp",
-        "AREA 18 - Trade Development Division (TDD)"
-    ],
+    "origin": "TDD",
     "maxHops": 4,
     "maxChildren": 20,
     "splitDepth": 3,

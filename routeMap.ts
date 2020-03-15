@@ -37,7 +37,7 @@ export class RouteMap {
         originNode.addRoute(route);
     }
 
-    public asRouteTree(originPortName: string[]): RouteTree {
+    public asRouteTree(originPortName: string): RouteTree {
         const originNode = this.findPortNode(originPortName);
 
         return new RouteTree(originNode);
@@ -53,16 +53,14 @@ export class RouteMap {
         return s;
     }
 
-    private findPortNode(portName: string[]): PortNode {
-        const port = new Port(portName);
-
+    private findPortNode(portName: string): PortNode {
         for (const [portKey, portNode] of this.portMap.entries()) {
-            if (port.equals(portKey)) {
+            if (portKey.matchesName(portName)) {
                 return portNode;
             }
         }
 
-        throw new Error(`Port '${port}' not found`);
+        throw new Error(`Port '${portName}' not found`);
     }
 }
 
