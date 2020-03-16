@@ -98,6 +98,10 @@ export class TreeNode {
     public hash(): string {
         return this.value.hash();
     }
+
+    public portEquals(other: PortNode): boolean {
+        return this.value.equals(other);
+    }
 }
 
 export class TreeEdge {
@@ -218,10 +222,10 @@ export class RouteTree {
     private readonly root: TreeNode;
     private readonly leaves: TreeNode[];
 
-    constructor(origin: PortNode) {
+    constructor(origin: PortNode, destination?: PortNode) {
         this.leaves = [];
 
-        this.root = this.buildTree(origin);
+        this.root = this.buildTree(origin, destination);
     }
 
     public getPaths(): TradePath[] {
@@ -237,11 +241,15 @@ export class RouteTree {
         return paths;
     }
 
-    private addLeaf(leafNode: TreeNode): void {
+    private addLeaf(leafNode: TreeNode, destination?: PortNode): void {
+        if (destination !== undefined && !leafNode.portEquals(destination)) {
+            return;
+        }
+
         this.leaves.push(leafNode);
     }
 
-    private buildTree(origin: PortNode): TreeNode {
+    private buildTree(origin: PortNode, destination?: PortNode): TreeNode {
         if (Config.getMaxHops() < 0) {
             throw new Error('Max depth may not be negative');
         }
@@ -270,7 +278,7 @@ export class RouteTree {
                 edgeQueue.push([edge, 1]);
             }
             else {
-                this.addLeaf(edge.child);
+                this.addLeaf(edge.child, destination);
             }
         }
 
@@ -303,7 +311,7 @@ export class RouteTree {
             for (const newEdge of poppedEdge.generateChildren(Config.getMaxChildren())) {
                 if (childDepth === Config.getMaxHops()) {
                     // If the child is at the max depth, add it to the list of leaves
-                    this.addLeaf(newEdge.child);
+                    this.addLeaf(newEdge.child, destination);
                 }
                 else {
                     // Otherwise, queue it to generate more children

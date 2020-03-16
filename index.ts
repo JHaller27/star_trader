@@ -23,7 +23,7 @@ console.log('done');
 
 
 console.log('Generating route tree...');
-const routeTree: RouteTree = routeMap.asRouteTree(Config.getOrigin());
+const routeTree: RouteTree = routeMap.asRouteTree(Config.getOrigin(), Config.getDestination());
 console.log('done');
 
 console.log('Traversing paths...');

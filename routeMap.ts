@@ -37,10 +37,11 @@ export class RouteMap {
         originNode.addRoute(route);
     }
 
-    public asRouteTree(originPortName: string): RouteTree {
+    public asRouteTree(originPortName: string, destinationPortName?: string): RouteTree {
         const originNode = this.findPortNode(originPortName);
+        const destinationNode = destinationPortName !== undefined ? this.findPortNode(destinationPortName) : undefined;
 
-        return new RouteTree(originNode);
+        return new RouteTree(originNode, destinationNode);
     }
 
     public toString(): string {

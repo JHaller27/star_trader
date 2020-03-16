@@ -1,5 +1,7 @@
 export interface ConfigSettings {
     origin: string,
+    destination?: string,
+
     maxHops: number,
     maxChildren?: number,
     splitDepth?: number,
@@ -12,6 +14,7 @@ export class Config {
     private static instance: Config | undefined;
 
     private readonly origin: string;
+    private readonly destination?: string;
     private readonly maxHops: number;
     private readonly maxChildren: number | undefined;
     private readonly splitDepth: number | undefined;
@@ -20,6 +23,7 @@ export class Config {
 
     private constructor(settings: ConfigSettings) {
         this.origin = settings.origin;
+        this.destination = settings.destination;
         this.maxHops = settings.maxHops;
         this.maxChildren = settings.maxChildren;
         this.splitDepth = settings.splitDepth;
@@ -41,6 +45,10 @@ export class Config {
 
     public static getOrigin(): string {
         return this.getInstance().origin;
+    }
+
+    public static getDestination(): string | undefined {
+        return this.getInstance().destination;
     }
 
     public static getMaxHops(): number {
