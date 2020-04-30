@@ -2,7 +2,6 @@ import { IReader, JSONReader } from "./reader";
 import { RouteMapGenerator } from "./generator";
 import { RouteMap } from "./routeMap";
 import { RouteTree, TradePath } from "./routeTree";
-import { Port } from "./port";
 import { Ship } from "./ship";
 import { Config } from "./configuration";
 
