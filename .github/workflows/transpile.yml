@@ -26,7 +26,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         npm install
-        tsc --build
+        tsc --declaration false --sourceMap false
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
