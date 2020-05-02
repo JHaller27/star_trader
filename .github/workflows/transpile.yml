@@ -30,7 +30,7 @@ jobs:
         tsc --declaration false --sourceMap false
         
     - name: Copy Commodities Data File
-      run: cp data/commodities.json scripts/data/commodities.json
+      run: cp data/commodities.json scripts/js/data/commodities.json
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
