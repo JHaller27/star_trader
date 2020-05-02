@@ -1,12 +1,12 @@
 {
-    "origin": "TDD",
-    "destination": "Olisar",
+    "origin": "061",
+    "detination": "Hurston",
     "maxHops": 2,
     "maxChildren": 20,
     "splitDepth": 3,
     "allowHidden": false,
     "excludeCommodities": ["Medical Supplies"],
 
-    "credits": 55000,
-    "maxCargoSCU": 66
+    "credits": 20000,
+    "maxCargoSCU": 8
 }

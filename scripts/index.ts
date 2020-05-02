@@ -5,7 +5,7 @@ import { RouteTree, TradePath } from "./routeTree";
 import { Ship } from "./ship";
 import { Config } from "./configuration";
 
-import settings from "./data/config.json";
+import settings from "../data/config.json";
 
 Config.initialize(settings);
 Ship.initialize(settings.credits, settings.maxCargoSCU);
