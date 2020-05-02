@@ -29,13 +29,10 @@ jobs:
         npm install
         tsc --declaration false --sourceMap false
         
-    - name: Copy Commodities Data File
-      run: cp data/commodities.json scripts/js/data/commodities.json
-        
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v2
       with:
         # Artifact name
         name: scripts
         # A file, directory or wildcard pattern that describes what to upload
-        path: scripts/js/scripts
+        path: ts/out/ts
