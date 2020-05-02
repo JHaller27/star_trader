@@ -25,6 +25,7 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Transpile
       run: |
+        cd scripts/
         npm install
         tsc --declaration false --sourceMap false
         
